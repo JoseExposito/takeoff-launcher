@@ -1,0 +1,5 @@
+To install the plasmoid you only need to run the ./_install.sh script
+
+Then add the plasmoid to your desktop.
+
+To unistall the plasmoid run the ./_unistall.sh script

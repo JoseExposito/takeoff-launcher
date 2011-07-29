@@ -1,0 +1,6 @@
+Copyright (C) 2011 José Expósito <jose.exposito89@gmail.com>
+
+--------------------------------------------------------------------------------
+
+Special thanks to Александр Соколов for the qtxdg library, placed on
+/src/takeoff/model/qtxdg/ and licensed under GPLv3.
