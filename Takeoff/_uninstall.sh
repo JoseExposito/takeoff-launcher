@@ -1,10 +1,10 @@
 #!/bin/bash
-# Usage $uninstall.sh SuperUserPass
+# Usage $ _uninstall.sh SuperUserPass
 
 if [ ! $# -eq 1 ] ; then
     echo The script must receive the super user password
     exit
-fi 
+fi
 
 cd plasmoid
 

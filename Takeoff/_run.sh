@@ -1,5 +1,5 @@
 #!/bin/bash
-# Usage $run.sh SuperUserPass
+# Usage $ _run.sh SuperUserPass
 
 if [ ! $# -eq 1 ] ; then
     echo The script must receive the super user password

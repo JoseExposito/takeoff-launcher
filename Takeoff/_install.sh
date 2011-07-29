@@ -1,5 +1,5 @@
 #!/bin/bash
-# Usage $install.sh SuperUserPass
+# Usage $ _install.sh SuperUserPass
 
 if [ ! $# -eq 1 ] ; then
     echo The script must receive the super user password
