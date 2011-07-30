@@ -1,0 +1,16 @@
+*[http://code.google.com/p/takeoff-launcher/feeds Find out recent changes in Takeoff!]* https://lh3.googleusercontent.com/_ReRtolbPWnI/TW45hTR7DaI/AAAAAAAAAEk/Qzjh5Dw1mLE/rss.png
+
+<br/>
+
+ * *Takeoff v0.1:*
+
+ - [http://takeoff-launcher.googlecode.com/files/takeoff-0.1.tar.gz Download source code]
+
+<br/>
+<hr>
+<br/>
+
+If you want, please, make a donation, else download the program... is free!
+
+
+[https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=6Z5QZNI-n2K5Xna1wE3N36uijvQ-sS0VUJoRfDXwKHzoq8dsJJrf5f72BH8&dispatch=5885d80a13c0db1f8e263663d3faee8d1e83f46a36995b3856cef1e18897ad75 https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif] 
