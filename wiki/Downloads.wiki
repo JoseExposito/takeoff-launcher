@@ -2,6 +2,10 @@
 
 <br/>
 
+ * *Takeoff v0.1.5:* (A small release for the users that have problems with the plasmoid after reboot)
+
+ - [https://takeoff-launcher.googlecode.com/files/takeoff-0.1.5.tar.gz Download source code]
+
  * *Takeoff v0.1:*
 
  - [http://takeoff-launcher.googlecode.com/files/takeoff-0.1.tar.gz Download source code]
