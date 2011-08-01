@@ -10,6 +10,8 @@ include_directories(
         ${KDE4_INCLUDES}
 )
 
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
+
 # Add source code
 set(Takeoff_SRCS
     # /src/takeoff
