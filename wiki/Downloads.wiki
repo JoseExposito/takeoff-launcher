@@ -2,6 +2,14 @@
 
 <br/>
 
+ * *If you are a Chakra user or an Arch Linux, you can get the last version from CCR/AUR:*
+ - http://chakra-project.org/ccr/packages.php?ID=2168
+
+ - http://aur.archlinux.org/packages.php?ID=51137
+
+
+<br/>
+
  * *Takeoff v0.1.5:* (A small release for the users that have problems with the plasmoid after reboot)
 
  - [https://takeoff-launcher.googlecode.com/files/takeoff-0.1.5.tar.gz Download source code]
