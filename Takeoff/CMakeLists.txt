@@ -1,6 +1,13 @@
 # Project settings
 project(Takeoff)
+cmake_minimum_required(VERSION 2.6)
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
+
+set(CMAKE_PREFIX_PATH /usr)
+
+message("PREFIX : ${CMAKE_PREFIX_PATH}")
 find_package(KDE4 REQUIRED)
+find_package(MSGFMT REQUIRED)
 include(KDE4Defaults)
 
 add_definitions(${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
@@ -10,9 +17,7 @@ include_directories(
         ${KDE4_INCLUDES}
 )
 
-# Translations
-set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
-find_package(MSGFMT REQUIRED)
+add_subdirectory(translations)
 
 # Add source code
 set(Takeoff_SRCS
@@ -69,8 +74,6 @@ set(Takeoff_SRCS
     src/takeoff/takeoff_widget/parts/Panel.cpp
 )
 kde4_add_ui_files(Takeoff_SRCS src/takeoff/config/ConfigForm.ui)
-
-add_subdirectory(translations)
 
 # Plasmoid settings
 kde4_add_plugin(plasma_applet_takeoff ${Takeoff_SRCS})
