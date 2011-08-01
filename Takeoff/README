@@ -1,5 +1,21 @@
-To install the plasmoid you only need to run the ./_install.sh script
+Install dependencies (the name will change between distros):
 
-Then add the plasmoid to your desktop.
+    - build-essentials, base-devel or similar
+    - libqt4-dev
+    - kdelibs5-dev
+    - libplasma3
 
-To unistall the plasmoid run the ./_unistall.sh script
+To build:
+
+    $ mkdir build
+    $ cd build
+    $ cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` .. && make
+
+To install:
+
+    $ sudo make install
+
+To test:
+
+    $ kbuildsycoca4
+    $ plasmoidviewer PlamoidName
