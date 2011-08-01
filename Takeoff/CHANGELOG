@@ -1,6 +1,7 @@
-[+] Takeoff v0.1.5 (2011/07/29)
-    - Switched from QMake to CMake to solve problems after reboot in certain
-      distros. Special thanks to "pinotree" for their help with cmake.
+[+] Takeoff v0.1.5 (2011/08/01)
+    - Switched from QMake to CMake to solve the "Could not find requested
+      component:takeoff" problem in certain distros. Special thanks to
+      "pinotree" for his help with cmake.
     - Removed the libmagic dependence
 
 [+] Takeoff v0.1 (2011/07/29)
