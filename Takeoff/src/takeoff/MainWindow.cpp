@@ -51,11 +51,6 @@ MainWindow::MainWindow(QObject *parent, const QVariantList &args)
         : Plasma::PopupApplet(parent, args),
           takeoff(new TakeoffWidget(this))
 {
-    // Translations
-    QString locale = QLocale::system().name();
-    QTranslator translator;
-    translator.load("takeoff_" + locale, "translations");
-
     // Plasmoid aspect
     this->setBackgroundHints(DefaultBackground);
     this->setAspectRatioMode(Plasma::IgnoreAspectRatio);
@@ -117,7 +112,7 @@ void MainWindow::loadConfig()
 
 void MainWindow::loadFavorites()
 {
-    this->takeoff->addTab(KIcon("favorites"), tr("Favorites"));
+    this->takeoff->addTab(KIcon("favorites"), i18n("Favorites"));
     QList<Launcher*> favoritesList = Favorites::favorites();
 
     foreach (Launcher *launcher, favoritesList) {
