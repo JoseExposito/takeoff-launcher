@@ -66,6 +66,8 @@ set(Takeoff_SRCS
 )
 kde4_add_ui_files(Takeoff_SRCS src/takeoff/config/ConfigForm.ui)
 
+add_subdirectory(translations)
+
 # Plasmoid settings
 kde4_add_plugin(plasma_applet_takeoff ${Takeoff_SRCS})
 target_link_libraries(plasma_applet_takeoff
