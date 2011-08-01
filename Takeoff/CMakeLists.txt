@@ -10,7 +10,9 @@ include_directories(
         ${KDE4_INCLUDES}
 )
 
+# Translations
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
+find_package(MSGFMT REQUIRED)
 
 # Add source code
 set(Takeoff_SRCS
