@@ -32,7 +32,9 @@
 *********************************************************************/
 
 #include "xdgdesktopfile.h"
-#include "xdgmime.h"
+//#include "xdgmime.h"
+// HACK The function bool XdgDesktopFilePrivate::startLinkDetached() const
+//      (line 776) is comented for remove the libmagic dependence.
 #include "xdgicon.h"
 #include "xdgdirs.h"
 
@@ -773,7 +775,7 @@ bool XdgDesktopFilePrivate::startApplicationDetached(const QStringList& urls) co
  ************************************************/
 bool XdgDesktopFilePrivate::startLinkDetached() const
 {
-    Q_Q(const XdgDesktopFile);
+    /*Q_Q(const XdgDesktopFile);
     QString url = q->url();
 
     if (url.isEmpty())
@@ -799,7 +801,7 @@ bool XdgDesktopFilePrivate::startLinkDetached() const
         // Internet URL
         return QDesktopServices::openUrl(QUrl::fromEncoded(url.toLocal8Bit()));
     }
-
+    */
     return false;
 }
 

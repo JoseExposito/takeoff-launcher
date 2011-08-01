@@ -19,8 +19,8 @@
  * @class  ConfigForm
  */
 #include "ConfigForm.h"
-#include "ui_ConfigForm.h"
 #include "Config.h"
+#include "ui_ConfigForm.h"
 #include <KDE/KIconDialog>
 
 // ************************************************************************** //

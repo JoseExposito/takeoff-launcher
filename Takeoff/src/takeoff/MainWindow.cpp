@@ -20,6 +20,7 @@
  */
 #include "MainWindow.h"
 #include <QtCore/QList>
+#include <QtCore/QTranslator>
 #include <QtGui/QApplication>
 #include <QtGui/QDesktopWidget>
 #include <KDE/KIcon>
@@ -50,6 +51,11 @@ MainWindow::MainWindow(QObject *parent, const QVariantList &args)
         : Plasma::PopupApplet(parent, args),
           takeoff(new TakeoffWidget(this))
 {
+    // Translations
+    QString locale = QLocale::system().name();
+    QTranslator translator;
+    translator.load("takeoff_" + locale, "translations");
+
     // Plasmoid aspect
     this->setBackgroundHints(DefaultBackground);
     this->setAspectRatioMode(Plasma::IgnoreAspectRatio);
@@ -111,7 +117,7 @@ void MainWindow::loadConfig()
 
 void MainWindow::loadFavorites()
 {
-    this->takeoff->addTab(KIcon("favorites"), i18n("Favorites"));
+    this->takeoff->addTab(KIcon("favorites"), tr("Favorites"));
     QList<Launcher*> favoritesList = Favorites::favorites();
 
     foreach (Launcher *launcher, favoritesList) {
@@ -124,6 +130,7 @@ void MainWindow::loadAllApplications()
 {
     QString menuFile = XdgMenu::getMenuFileName();
     XdgMenu xdgMenu;
+    xdgMenu.environments() << "KDE";
 
     bool res = xdgMenu.read(menuFile);
     if (!res) {
@@ -133,7 +140,7 @@ void MainWindow::loadAllApplications()
     QDomNode rootNode = xdgMenu.xml().firstChild();
     QDomNode categorieNode = rootNode.firstChild();
 
-    this->takeoff->addTab(KIcon("applications-other"),i18n("All Applications"));
+    this->takeoff->addTab(KIcon("applications-other"), tr("All Applications"));
 
     for(categorieNode.firstChild(); !categorieNode.isNull();
             categorieNode=categorieNode.nextSibling()) {
@@ -153,6 +160,7 @@ void MainWindow::loadXdgMenu()
 {
     QString menuFile = XdgMenu::getMenuFileName();
     XdgMenu xdgMenu;
+    xdgMenu.environments() << "KDE";
 
     bool res = xdgMenu.read(menuFile);
     if (!res) {
