@@ -1,3 +1,7 @@
+[+] Current code:
+    - CMakeLists file performed (thanks antoniojars!!)
+
+
 [+] Takeoff v0.1.5 (2011/08/01)
     - Switched from QMake to CMake to solve the "Could not find requested
       component:takeoff" problem in certain distros. Special thanks to

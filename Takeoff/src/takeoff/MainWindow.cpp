@@ -172,7 +172,8 @@ void MainWindow::loadXdgMenu()
             continue;
 
         if(!categorieElem.attribute("title").isEmpty()
-                && !categorieElem.attribute("title").startsWith(".")) {
+                && !categorieElem.attribute("title").startsWith(".")
+                && categorieElem.attribute("exec").isEmpty()) {
             // Load the categories
             this->takeoff->addTab(KIcon(categorieElem.attribute("icon")),
             categorieElem.attribute("title"));
