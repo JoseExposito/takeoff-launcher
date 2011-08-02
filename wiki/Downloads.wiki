@@ -2,7 +2,7 @@
 
 <br/>
 
- * *If you are a Chakra user or an Arch Linux, you can get the last version from CCR/AUR:*
+ * *If you are a Chakra user or an Arch Linux user, you can get the last version from CCR/AUR:*
  - http://chakra-project.org/ccr/packages.php?ID=2168
 
  - http://aur.archlinux.org/packages.php?ID=51137
