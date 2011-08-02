@@ -14,6 +14,9 @@
 
  - [https://takeoff-launcher.googlecode.com/files/takeoff-0.1.5.tar.gz Download source code]
 
+ - [https://build.opensuse.org/package/show?package=takeoff&project=home%3AFaster3ck%3Afasterindesign Download packages for Fedora 15 (thanks to "faster")]
+ 
+
  * *Takeoff v0.1:*
 
  - [http://takeoff-launcher.googlecode.com/files/takeoff-0.1.tar.gz Download source code]
