@@ -28,7 +28,7 @@ namespace Takeoff  {
  * Launcher, contains the information about name, icon, and the command to
  * launch.
  */
-class Launcher : public QGraphicsWidget //Plasma::IconWidget
+class Launcher : public QGraphicsWidget
 {
     Q_OBJECT
 

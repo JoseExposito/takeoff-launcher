@@ -23,6 +23,7 @@
 #include <QtCore/QDir>
 #include <QtCore/QSettings>
 #include <KDE/KStandardDirs>
+#include <KDE/KIcon>
 
 // ************************************************************************** //
 // **********             STATIC METHODS AND VARIABLES             ********** //
@@ -62,25 +63,32 @@ const char *Config::ICON                  = "Takeoff/Icon";
 // **********              CONSTRUCTORS AND DESTRUCTOR             ********** //
 // ************************************************************************** //
 
-#include <QDebug>
 Config::Config()
 {
     QFile configFile(this->getConfigFilePath());
 
     // If the configuration file doesn't exist create it
     if (!configFile.exists()) {
+        // Set the distro icon if is available, else put the default icon
+        QString icon = KIcon("start-here-branding").isNull()
+                ? "start-here-kde"
+                : "start-here-branding";
+
         configFile.open(QFile::WriteOnly);
-        configFile.write(
-                "[Takeoff]\n"
-                "ShowFavorites=true\n"
-                "ShowAllApplications=true\n"
-                "ShowXdgMenu=true\n"
-                "LauncherSize=60\n"
-                "SeparationBetweenLaunchers=40\n"
-                "NumRows=3\n"
-                "NumColumns=6\n"
-                "Icon=start-here-kde"
+
+        QString content(
+            "[Takeoff]\n"
+            "ShowFavorites=true\n"
+            "ShowAllApplications=true\n"
+            "ShowXdgMenu=true\n"
+            "LauncherSize=60\n"
+            "SeparationBetweenLaunchers=40\n"
+            "NumRows=3\n"
+            "NumColumns=6\n"
+            "Icon=" + icon
         );
+
+        configFile.write(content.toLocal8Bit().data());
         configFile.close();
     }
 

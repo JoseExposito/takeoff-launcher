@@ -2,6 +2,7 @@
     - CMakeLists file performed (thanks antoniojars!!)
     - Solved problems with some launchers (with %U, %c...) and added support for
       elastic cursor on launch and similar effects.
+    - By default, uses the distro specified icon
 
 
 [+] Takeoff v0.1.5 (2011/08/01)

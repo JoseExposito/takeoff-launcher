@@ -22,7 +22,6 @@
 #include <QtGui/QGraphicsLinearLayout>
 #include <KDE/KRun>
 #include <KDE/Plasma/IconWidget>
-#include <KDE/Plasma/Label>
 using namespace Takeoff;
 
 // ************************************************************************** //
@@ -31,24 +30,18 @@ using namespace Takeoff;
 
 Launcher::Launcher(const QIcon &icon, const QString &name,
         const QString &desktopFile)
-        : QGraphicsWidget(), //Plasma::IconWidget(icon, name),
-          desktopFile(desktopFile)
+        : desktopFile(desktopFile)
 {
-    // Icon
-    Plasma::IconWidget *iconWidget = new Plasma::IconWidget(icon, "", this);
+    // Set the tooltip
+    this->setToolTip(name);
+
+    // Set the icon
+    Plasma::IconWidget *iconWidget = new Plasma::IconWidget(icon, name, this);
     connect(iconWidget, SIGNAL(clicked()), this, SLOT(runApplication()));
     connect(iconWidget, SIGNAL(clicked()), this, SIGNAL(clicked()));
 
-    // Label with the text, is necessary to add a Plasma::Label to show the
-    // complete text
-    Plasma::Label *text = new Plasma::Label(this);
-    text->setText(name);
-    text->setAlignment(Qt::AlignCenter);
-
     QGraphicsLinearLayout *l = new QGraphicsLinearLayout(this);
-    l->setOrientation(Qt::Vertical);
     l->addItem(iconWidget);
-    l->addItem(text);
     this->setLayout(l);
 }
 

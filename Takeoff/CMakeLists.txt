@@ -27,6 +27,8 @@ add_subdirectory(src/takeoff/model/favorites)
 add_subdirectory(src/takeoff/model/qtxdg)
 add_subdirectory(src/takeoff/takeoff_widget)
 add_subdirectory(src/takeoff/takeoff_widget/parts)
+
+# Add ui files
 kde4_add_ui_files(Takeoff_SRCS src/takeoff/config/ConfigForm.ui)
 
 # Plasmoid settings and instalation
