@@ -78,8 +78,10 @@ Panel::Panel(QGraphicsWidget *parent)
     }
 
 
+    // Set the separation between launchers
     this->panelLayout->setSpacing(
-            cfg->getSettings(Config::SEPARATION_BETWEEN_LAUNCHERS).toInt());
+        cfg->getSettings(Config::SEPARATION_BETWEEN_LAUNCHERS).toInt());
+
     this->setLayout(this->panelLayout);
 }
 

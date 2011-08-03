@@ -42,7 +42,7 @@ QList<Takeoff::Launcher*> Favorites::favorites()
         Takeoff::Launcher *launcher = new Takeoff::Launcher(
                 KIcon(desktop.value("Desktop Entry/Icon").toString()),
                 desktop.value("Desktop Entry/Name").toString(),
-                desktop.value("Desktop Entry/Exec").toString());
+                file);
         ret.append(launcher);
     }
 

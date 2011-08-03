@@ -47,6 +47,7 @@ K_EXPORT_PLASMA_APPLET(takeoff, MainWindow)
 // **********              CONSTRUCTORS AND DESTRUCTOR             ********** //
 // ************************************************************************** //
 
+#include "model/qtxdg/xdgmenuwidget.h"
 MainWindow::MainWindow(QObject *parent, const QVariantList &args)
         : Plasma::PopupApplet(parent, args),
           takeoff(new TakeoffWidget(this))
@@ -171,9 +172,8 @@ void MainWindow::loadXdgMenu()
         if(categorieElem.isNull())
             continue;
 
-        if(!categorieElem.attribute("title").isEmpty()
-                && !categorieElem.attribute("title").startsWith(".")
-                && categorieElem.attribute("exec").isEmpty()) {
+        if(categorieElem.tagName() == "Menu"
+                && !categorieElem.attribute("title").startsWith(".")) {
             // Load the categories
             this->takeoff->addTab(KIcon(categorieElem.attribute("icon")),
             categorieElem.attribute("title"));
@@ -193,9 +193,9 @@ void MainWindow::loadLaunchers(QDomNode node, int tabIndex)
             continue;
 
         // Launcher
-        if(!elem.attribute("exec").isEmpty()) {
+        if(elem.tagName() == "AppLink") {
             Launcher *launcher = new Launcher(KIcon(elem.attribute("icon")),
-                    elem.attribute("title"), elem.attribute("exec"));
+                    elem.attribute("title"), elem.attribute("desktopFile"));
             this->takeoff->addLauncher(tabIndex, launcher);
 
             connect(launcher, SIGNAL(clicked()),

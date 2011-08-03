@@ -35,13 +35,14 @@ public:
 
     /**
      * Default constructor.
-     * @param icon    The icon of the launcher. If a null-icon is passed Takeoff
+     * @param icon The icon of the launcher. If a null-icon is passed Takeoff
      *        will put a default icon.
-     * @param name    Name to show under the icon.
-     * @param command Command to execute when the user click on the launcher.
-     * @param parent  Parent of the widget.
+     * @param name Name to show under the icon.
+     * @param desktopFile Desktop file to execute when the user click on the
+     *        launcher.
      */
-    Launcher(const QIcon &icon, const QString &name, const QString &command);
+    Launcher(const QIcon &icon, const QString &name,
+            const QString &desktopFile);
 
     //--------------------------------------------------------------------------
 
@@ -50,8 +51,8 @@ public:
 
 private:
 
-    /// Command to execute when the user click on the launcher.
-    QString command;
+    /// The desktop file to execute when the user click on the launcher.
+    QString desktopFile;
 
 };
 

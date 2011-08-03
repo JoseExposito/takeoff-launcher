@@ -21,19 +21,21 @@
 #include "Launcher.h"
 #include <QtCore/QProcess>
 #include <QtGui/QGraphicsLinearLayout>
+#include <KDE/KRun>
+#include "../config/Config.h"
 using namespace Takeoff;
 
 // ************************************************************************** //
 // **********              CONSTRUCTORS AND DESTRUCTOR             ********** //
 // ************************************************************************** //
 
+#include <QDebug>
 Launcher::Launcher(const QIcon &icon, const QString &name,
-        const QString &command)
-        : Plasma::IconWidget(icon, name)
+        const QString &desktopFile)
+        : Plasma::IconWidget(icon, name),
+          desktopFile(desktopFile)
 {
-    // TODO Problems with some commands, for example
-    //      $ chromium localhost/phpmyadmin
-    this->command = command.split(" ").at(0);
+
 }
 
 
@@ -43,7 +45,5 @@ Launcher::Launcher(const QIcon &icon, const QString &name,
 
 void Launcher::mousePressEvent(QGraphicsSceneMouseEvent */*event*/)
 {
-    emit this->pressed(true);
-    QProcess myProcess;
-    myProcess.startDetached(this->command);
+    KRun *r = new KRun(KUrl(this->desktopFile), NULL);
 }
