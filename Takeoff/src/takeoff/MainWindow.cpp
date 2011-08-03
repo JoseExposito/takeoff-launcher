@@ -59,6 +59,9 @@ MainWindow::MainWindow(QObject *parent, const QVariantList &args)
     this->takeoff->setMinimumWidth(QApplication::desktop()->width());
     this->takeoff->setMinimumHeight(QApplication::desktop()->height());
 
+    // Hide the popup when a launcher is clicked
+    connect(this->takeoff, SIGNAL(clicked()), this, SLOT(hidePopup()));
+
     // Load the configuration
     this->loadConfig();
 }
@@ -70,7 +73,10 @@ MainWindow::MainWindow(QObject *parent, const QVariantList &args)
 
 QGraphicsWidget *MainWindow::graphicsWidget()
 {
+    // TODO Allow to select go to the first tab or maintain the last used tab
+    // if (cfg->....)
     this->takeoff->setCurrentIndex(0);
+
     return this->takeoff;
 }
 
@@ -116,10 +122,8 @@ void MainWindow::loadFavorites()
     this->takeoff->addTab(KIcon("favorites"), i18n("Favorites"));
     QList<Launcher*> favoritesList = Favorites::favorites();
 
-    foreach (Launcher *launcher, favoritesList) {
+    foreach (Launcher *launcher, favoritesList)
         this->takeoff->addLauncher(this->takeoff->getNumTabs()-1, launcher);
-        connect(launcher, SIGNAL(pressed(bool)), this, SLOT(hidePopup()));
-    }
 }
 
 void MainWindow::loadAllApplications()
@@ -197,9 +201,6 @@ void MainWindow::loadLaunchers(QDomNode node, int tabIndex)
             Launcher *launcher = new Launcher(KIcon(elem.attribute("icon")),
                     elem.attribute("title"), elem.attribute("desktopFile"));
             this->takeoff->addLauncher(tabIndex, launcher);
-
-            connect(launcher, SIGNAL(clicked()),
-                    this, SLOT(hidePopup()));
 
         // Submenu
         } else {

@@ -57,9 +57,13 @@ void TakeoffWidget::addTab(const QIcon &icon, const QString &title)
 
 void TakeoffWidget::addLauncher(int tabIndex, Launcher *launcher)
 {
+    // Connect the launcher clicked signal with the TakeoffWidget clicked signal
+    connect(launcher, SIGNAL(clicked()), this, SIGNAL(clicked()));
+
     // Reparent for free memory using reset()
     launcher->setParent(this->tabBar);
 
+    // Add the launcher
     PanelArea *panelArea = (PanelArea*)this->tabBar->tabAt(tabIndex);
 
     if (panelArea == NULL || launcher == NULL)

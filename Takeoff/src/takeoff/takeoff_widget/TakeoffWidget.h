@@ -33,6 +33,7 @@ namespace Takeoff {
  */
 class TakeoffWidget : public QGraphicsWidget
 {
+    Q_OBJECT
 
 public:
 
@@ -84,6 +85,13 @@ public:
      * Removes all the panels and launchers.
      */
     void reset();
+
+signals:
+
+    /**
+     * Signal that is emitted whenever the user click on one launcher.
+     */
+    void clicked() const;
 
 private:
 

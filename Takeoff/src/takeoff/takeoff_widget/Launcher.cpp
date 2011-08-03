@@ -19,31 +19,45 @@
  * @class  Takeoff::Launcher
  */
 #include "Launcher.h"
-#include <QtCore/QProcess>
 #include <QtGui/QGraphicsLinearLayout>
 #include <KDE/KRun>
-#include "../config/Config.h"
+#include <KDE/Plasma/IconWidget>
+#include <KDE/Plasma/Label>
 using namespace Takeoff;
 
 // ************************************************************************** //
 // **********              CONSTRUCTORS AND DESTRUCTOR             ********** //
 // ************************************************************************** //
 
-#include <QDebug>
 Launcher::Launcher(const QIcon &icon, const QString &name,
         const QString &desktopFile)
-        : Plasma::IconWidget(icon, name),
+        : QGraphicsWidget(), //Plasma::IconWidget(icon, name),
           desktopFile(desktopFile)
 {
+    // Icon
+    Plasma::IconWidget *iconWidget = new Plasma::IconWidget(icon, "", this);
+    connect(iconWidget, SIGNAL(clicked()), this, SLOT(runApplication()));
+    connect(iconWidget, SIGNAL(clicked()), this, SIGNAL(clicked()));
 
+    // Label with the text, is necessary to add a Plasma::Label to show the
+    // complete text
+    Plasma::Label *text = new Plasma::Label(this);
+    text->setText(name);
+    text->setAlignment(Qt::AlignCenter);
+
+    QGraphicsLinearLayout *l = new QGraphicsLinearLayout(this);
+    l->setOrientation(Qt::Vertical);
+    l->addItem(iconWidget);
+    l->addItem(text);
+    this->setLayout(l);
 }
 
 
 // ************************************************************************** //
-// **********                    PUBLIC METHODS                    ********** //
+// **********                    PRIVATE SLOTS                     ********** //
 // ************************************************************************** //
 
-void Launcher::mousePressEvent(QGraphicsSceneMouseEvent */*event*/)
+void Launcher::runApplication() const
 {
-    KRun *r = new KRun(KUrl(this->desktopFile), NULL);
+    new KRun(KUrl(this->desktopFile), NULL);
 }

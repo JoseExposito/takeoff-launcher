@@ -21,15 +21,16 @@
 #ifndef TAKEOFFWIDGET_LAUNCHER_H
 #define TAKEOFFWIDGET_LAUNCHER_H
 
-#include <KDE/Plasma/IconWidget>
+#include <QGraphicsWidget>
 namespace Takeoff  {
 
 /**
  * Launcher, contains the information about name, icon, and the command to
  * launch.
  */
-class Launcher : public Plasma::IconWidget
+class Launcher : public QGraphicsWidget //Plasma::IconWidget
 {
+    Q_OBJECT
 
 public:
 
@@ -44,10 +45,19 @@ public:
     Launcher(const QIcon &icon, const QString &name,
             const QString &desktopFile);
 
-    //--------------------------------------------------------------------------
+signals:
 
-    /// Inherit from Plasma::IconWidget
-    virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
+    /**
+     * Signal that is emitted whenever the user click on the launcher.
+     */
+    void clicked() const;
+
+private slots:
+
+    /**
+     * Runs the application when the icon is clicked.
+     */
+    void runApplication() const;
 
 private:
 
