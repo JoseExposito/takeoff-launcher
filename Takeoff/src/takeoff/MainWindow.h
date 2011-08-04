@@ -45,11 +45,25 @@ public:
 
     //--------------------------------------------------------------------------
 
-    /// Inherit from Plasma::PopupApplet
+    /**
+     * Inherit from Plasma::PopupApplet. Returns the widget that must be show in
+     * the popup window.
+     * @return The widget.
+     */
     virtual QGraphicsWidget *graphicsWidget();
 
-    /// Inherit from Plasma::Applet
+    /**
+     * Inherit from Plasma::Applet. Creates the configuration interface, adding
+     * the Takeoff configuration GUI.
+     * @param parent The parent KConfigDialog where we will add the Takeoff GUI.
+     */
     virtual void createConfigurationInterface(KConfigDialog *parent);
+
+    /**
+     * Inherit from QGraphicsItem. Called when a key is pressed. Launch the
+     * search dialog.
+     */
+    virtual void keyPressEvent(QKeyEvent *event);
 
 private slots:
 

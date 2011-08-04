@@ -61,6 +61,18 @@ public:
      */
     void addLauncher(int tabIndex, Launcher *launcher);
 
+    /**
+     * Removes all the panels and launchers.
+     */
+    void reset();
+
+    //--------------------------------------------------------------------------
+
+    /**
+     *
+     */
+    //void launchSearch(const QString &text);
+
     //--------------------------------------------------------------------------
 
     /**
@@ -80,11 +92,6 @@ public:
      * @param index The index.
      */
     void setCurrentIndex(int index);
-
-    /**
-     * Removes all the panels and launchers.
-     */
-    void reset();
 
 signals:
 

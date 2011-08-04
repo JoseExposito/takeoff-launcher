@@ -1,6 +1,6 @@
 #!/bin/sh
 BASEDIR="`pwd`"
-PROJECT="takeoff"
+PROJECT="plasma_applet_takeoff"
 BUGADDR="https://code.google.com/p/takeoff-launcher/issues/list"
 WDIR="`pwd`/translations" 
  

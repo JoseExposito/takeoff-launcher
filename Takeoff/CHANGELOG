@@ -4,8 +4,9 @@
       elastic cursor on launch and similar effects.
     - By default, uses the distro specified icon
     - Added support for remember last tab or not
-    - Added a tooltip to show the complete name of the launchers that , for
+    - Added a tooltip to show the complete name of the launchers that, for
       space reason, can't show their complete name
+    - Added support for i18n (credits to Manu Tortosa)
 
 
 [+] Takeoff v0.1.5 (2011/08/01)

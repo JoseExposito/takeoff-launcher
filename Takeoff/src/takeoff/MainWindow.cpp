@@ -88,6 +88,11 @@ void MainWindow::createConfigurationInterface(KConfigDialog *parent)
     connect(parent, SIGNAL(okClicked()), this, SLOT(loadConfig()));
 }
 
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+
+}
+
 
 // ************************************************************************** //
 // **********                    PRIVATE SLOTS                     ********** //
@@ -140,7 +145,7 @@ void MainWindow::loadAllApplications()
     QDomNode rootNode = xdgMenu.xml().firstChild();
     QDomNode categorieNode = rootNode.firstChild();
 
-    this->takeoff->addTab(KIcon("applications-other"), tr("All Applications"));
+    this->takeoff->addTab(KIcon("applications-other"), i18n("All Applications"));
 
     for(categorieNode.firstChild(); !categorieNode.isNull();
             categorieNode=categorieNode.nextSibling()) {

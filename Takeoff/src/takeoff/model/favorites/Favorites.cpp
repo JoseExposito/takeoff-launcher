@@ -22,6 +22,7 @@
 #include <QtCore/QFile>
 #include <QtCore/QDir>
 #include <QtCore/QSettings>
+#include <QtCore/QLocale>
 #include <KDE/KIcon>
 #include <KDE/KStandardDirs>
 
@@ -39,10 +40,22 @@ QList<Takeoff::Launcher*> Favorites::favorites()
     QList<Takeoff::Launcher*> ret;
     foreach (const QString &file, desktopFiles) {
         QSettings desktop(file, QSettings::IniFormat);
-        Takeoff::Launcher *launcher = new Takeoff::Launcher(
-                KIcon(desktop.value("Desktop Entry/Icon").toString()),
-                desktop.value("Desktop Entry/Name").toString(),
-                file);
+
+        // Name of the application (with internatilatization)
+        QString completeLocale = QLocale::system().name(); // For example es_ES
+        QString simpleLocale   = completeLocale.split("_").at(0); // and es
+
+        QString appName = desktop.value(
+                "Desktop Entry/Name[" + completeLocale + "]", "").toString();
+        if (appName.isEmpty())
+            appName = desktop.value(
+                    "Desktop Entry/Name[" + simpleLocale + "]", "").toString();
+        if (appName.isEmpty())
+            appName = desktop.value("Desktop Entry/Name").toString();
+
+        // Create the launcher and it to the list
+        Takeoff::Launcher *launcher = new Takeoff::Launcher(KIcon(
+                desktop.value("Desktop Entry/Icon").toString()), appName, file);
         ret.append(launcher);
     }
 
