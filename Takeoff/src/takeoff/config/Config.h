@@ -55,6 +55,7 @@ public:
     static const char *NUM_ROWS;
     static const char *NUM_COLUMNS;
     static const char *ICON;
+    static const char *REMEMBER_LAST_TAB;
 
     /**
      * Returns the specified property.

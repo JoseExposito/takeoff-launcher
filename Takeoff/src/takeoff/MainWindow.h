@@ -53,7 +53,7 @@ public:
 
 private slots:
 
-    /// Loads the configuration using the provate methods load*
+    /// Loads the configuration using the private methods load*
     void loadConfig();
 
 private:

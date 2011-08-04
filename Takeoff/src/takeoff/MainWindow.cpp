@@ -47,7 +47,6 @@ K_EXPORT_PLASMA_APPLET(takeoff, MainWindow)
 // **********              CONSTRUCTORS AND DESTRUCTOR             ********** //
 // ************************************************************************** //
 
-#include "model/qtxdg/xdgmenuwidget.h"
 MainWindow::MainWindow(QObject *parent, const QVariantList &args)
         : Plasma::PopupApplet(parent, args),
           takeoff(new TakeoffWidget(this))
@@ -73,9 +72,10 @@ MainWindow::MainWindow(QObject *parent, const QVariantList &args)
 
 QGraphicsWidget *MainWindow::graphicsWidget()
 {
-    // TODO Allow to select go to the first tab or maintain the last used tab
-    // if (cfg->....)
-    this->takeoff->setCurrentIndex(0);
+    // If "remember last tab" is not checked go to the first tab (favorites)
+    Config *cfg = Config::getInstance();
+    if (!cfg->getSettings(Config::REMEMBER_LAST_TAB).toBool())
+        this->takeoff->setCurrentIndex(0);
 
     return this->takeoff;
 }

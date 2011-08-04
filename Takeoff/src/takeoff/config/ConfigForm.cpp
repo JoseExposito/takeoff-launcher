@@ -51,6 +51,8 @@ ConfigForm::ConfigForm(QWidget *parent)
             this->cfg->getSettings(Config::NUM_COLUMNS).toInt());
     this->ui->iconBtn->setIcon(
             KIcon(this->cfg->getSettings(Config::ICON).toString()));
+    this->ui->rememberLastTab->setChecked(
+            this->cfg->getSettings(Config::REMEMBER_LAST_TAB).toBool());
 }
 
 ConfigForm::~ConfigForm()
@@ -110,4 +112,10 @@ void ConfigForm::on_iconBtn_clicked()
         this->ui->iconBtn->setIcon(icon);
         this->cfg->setSettings(Config::ICON, icon.name());
     }
+}
+
+void ConfigForm::on_rememberLastTab_clicked()
+{
+    this->cfg->setSettings(Config::REMEMBER_LAST_TAB,
+            this->ui->rememberLastTab->isChecked());
 }

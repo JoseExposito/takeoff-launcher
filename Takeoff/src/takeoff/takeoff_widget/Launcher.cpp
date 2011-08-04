@@ -22,6 +22,8 @@
 #include <QtGui/QGraphicsLinearLayout>
 #include <KDE/KRun>
 #include <KDE/Plasma/IconWidget>
+#include <KDE/Plasma/ToolTipContent>
+#include <KDE/Plasma/ToolTipManager>
 using namespace Takeoff;
 
 // ************************************************************************** //
@@ -32,14 +34,18 @@ Launcher::Launcher(const QIcon &icon, const QString &name,
         const QString &desktopFile)
         : desktopFile(desktopFile)
 {
-    // Set the tooltip
-    this->setToolTip(name);
-
     // Set the icon
     Plasma::IconWidget *iconWidget = new Plasma::IconWidget(icon, name, this);
     connect(iconWidget, SIGNAL(clicked()), this, SLOT(runApplication()));
     connect(iconWidget, SIGNAL(clicked()), this, SIGNAL(clicked()));
 
+    // Set the tooltip
+    Plasma::ToolTipContent data;
+    data.setMainText(name);
+    data.setImage(icon.pixmap(32, 32));
+    Plasma::ToolTipManager::self()->setContent(iconWidget, data);
+
+    // Add the icon to the layout
     QGraphicsLinearLayout *l = new QGraphicsLinearLayout(this);
     l->addItem(iconWidget);
     this->setLayout(l);

@@ -57,6 +57,7 @@ const char *Config::SEPARATION_BETWEEN_LAUNCHERS
 const char *Config::NUM_ROWS              = "Takeoff/NumRows";
 const char *Config::NUM_COLUMNS           = "Takeoff/NumColumns";
 const char *Config::ICON                  = "Takeoff/Icon";
+const char *Config::REMEMBER_LAST_TAB     = "Takeoff/RememberLastTab";
 
 
 // ************************************************************************** //
@@ -85,7 +86,8 @@ Config::Config()
             "SeparationBetweenLaunchers=40\n"
             "NumRows=3\n"
             "NumColumns=6\n"
-            "Icon=" + icon
+            "Icon=" + icon + "\n"
+            "RememberLastTab=false"
         );
 
         configFile.write(content.toLocal8Bit().data());
@@ -109,6 +111,8 @@ Config::Config()
     this->hashSettings.insert(NUM_ROWS, this->settings->value(NUM_ROWS));
     this->hashSettings.insert(NUM_COLUMNS, this->settings->value(NUM_COLUMNS));
     this->hashSettings.insert(ICON, this->settings->value(ICON));
+    this->hashSettings.insert(REMEMBER_LAST_TAB,
+            this->settings->value(REMEMBER_LAST_TAB));
 }
 
 
