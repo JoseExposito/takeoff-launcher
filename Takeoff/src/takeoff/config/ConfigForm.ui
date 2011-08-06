@@ -7,21 +7,49 @@
     <x>0</x>
     <y>0</y>
     <width>425</width>
-    <height>239</height>
+    <height>264</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="8" column="0">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>Icon</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QCheckBox" name="showFavorites">
+     <property name="text">
+      <string>Show &quot;Favorites&quot; category</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QCheckBox" name="showAllApplications">
+     <property name="text">
+      <string>Show &quot;All Applications&quot; category</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QCheckBox" name="showXdgMenu">
+     <property name="text">
+      <string>Show standard menu</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
     <widget class="QLabel" name="label_4">
      <property name="text">
       <string>Launcher size</string>
      </property>
     </widget>
    </item>
-   <item row="8" column="2">
+   <item row="4" column="1">
     <widget class="QSlider" name="launcherSize">
      <property name="minimum">
       <number>30</number>
@@ -34,14 +62,14 @@
      </property>
     </widget>
    </item>
-   <item row="9" column="0">
+   <item row="5" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
       <string>Separation between launchers</string>
      </property>
     </widget>
    </item>
-   <item row="9" column="2">
+   <item row="5" column="1">
     <widget class="QSlider" name="separationSize">
      <property name="maximum">
       <number>100</number>
@@ -51,21 +79,14 @@
      </property>
     </widget>
    </item>
-   <item row="10" column="0">
+   <item row="6" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
       <string>Number of rows</string>
      </property>
     </widget>
    </item>
-   <item row="11" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Number of columns</string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="2">
+   <item row="6" column="1">
     <widget class="QSpinBox" name="numRows">
      <property name="minimum">
       <number>1</number>
@@ -75,7 +96,14 @@
      </property>
     </widget>
    </item>
-   <item row="11" column="2">
+   <item row="7" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Number of columns</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
     <widget class="QSpinBox" name="numColumns">
      <property name="minimum">
       <number>1</number>
@@ -85,35 +113,14 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_5">
+   <item row="8" column="0">
+    <widget class="QCheckBox" name="rememberLastTab">
      <property name="text">
-      <string>Icon</string>
+      <string>Remember last tab</string>
      </property>
     </widget>
    </item>
-   <item row="7" column="0">
-    <widget class="QCheckBox" name="showXdgMenu">
-     <property name="text">
-      <string>Show standard menu</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0">
-    <widget class="QCheckBox" name="showAllApplications">
-     <property name="text">
-      <string>Show &quot;All Applications&quot; category</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <widget class="QCheckBox" name="showFavorites">
-     <property name="text">
-      <string>Show &quot;Favorites&quot; category</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="2">
+   <item row="0" column="1">
     <widget class="QPushButton" name="iconBtn">
      <property name="minimumSize">
       <size>
@@ -135,13 +142,6 @@
        <width>48</width>
        <height>48</height>
       </size>
-     </property>
-    </widget>
-   </item>
-   <item row="12" column="0">
-    <widget class="QCheckBox" name="rememberLastTab">
-     <property name="text">
-      <string>Remember last tab</string>
      </property>
     </widget>
    </item>

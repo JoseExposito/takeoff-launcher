@@ -145,15 +145,15 @@ void MainWindow::loadAllApplications()
     QDomNode rootNode = xdgMenu.xml().firstChild();
     QDomNode categorieNode = rootNode.firstChild();
 
-    this->takeoff->addTab(KIcon("applications-other"), i18n("All Applications"));
+    this->takeoff->addTab(KIcon("applications-other"),i18n("All Applications"));
 
-    for(categorieNode.firstChild(); !categorieNode.isNull();
+    for (categorieNode.firstChild(); !categorieNode.isNull();
             categorieNode=categorieNode.nextSibling()) {
         QDomElement categorieElem = categorieNode.toElement();
         if(categorieElem.isNull())
             continue;
 
-        if(!categorieElem.attribute("title").isEmpty()
+        if (!categorieElem.attribute("title").isEmpty()
                 && !categorieElem.attribute("title").startsWith(".")) {
             this->loadLaunchers(categorieNode.firstChild(),
                     this->takeoff->getNumTabs()-1);
@@ -175,13 +175,13 @@ void MainWindow::loadXdgMenu()
     QDomNode rootNode = xdgMenu.xml().firstChild();
     QDomNode categorieNode = rootNode.firstChild();
 
-    for(categorieNode.firstChild(); !categorieNode.isNull();
+    for (categorieNode.firstChild(); !categorieNode.isNull();
             categorieNode=categorieNode.nextSibling()) {
         QDomElement categorieElem = categorieNode.toElement();
-        if(categorieElem.isNull())
+        if (categorieElem.isNull())
             continue;
 
-        if(categorieElem.tagName() == "Menu"
+        if (categorieElem.tagName() == "Menu"
                 && !categorieElem.attribute("title").startsWith(".")) {
             // Load the categories
             this->takeoff->addTab(KIcon(categorieElem.attribute("icon")),
@@ -196,7 +196,7 @@ void MainWindow::loadXdgMenu()
 
 void MainWindow::loadLaunchers(QDomNode node, int tabIndex)
 {
-    for(node.firstChild(); !node.isNull(); node=node.nextSibling()) {
+    for (node.firstChild(); !node.isNull(); node=node.nextSibling()) {
         QDomElement elem = node.toElement();
         if(elem.isNull())
             continue;
