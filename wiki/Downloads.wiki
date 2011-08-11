@@ -28,4 +28,4 @@
 If you want, please, make a donation, else download the program... is free!
 
 
-[https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=6Z5QZNI-n2K5Xna1wE3N36uijvQ-sS0VUJoRfDXwKHzoq8dsJJrf5f72BH8&dispatch=5885d80a13c0db1f8e263663d3faee8d1e83f46a36995b3856cef1e18897ad75 https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif] 
+[https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=jose%2eexposito89%40gmail%2ecom&lc=US&item_name=Takeoff&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif] 
