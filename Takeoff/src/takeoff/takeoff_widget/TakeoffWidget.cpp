@@ -70,6 +70,8 @@ void TakeoffWidget::reset()
     // Signals and slots
     connect(this->searchWidget, SIGNAL(exitSearch()),
             this, SLOT(exitSearch()));
+    connect(this->searchWidget, SIGNAL(clicked()),
+            this, SIGNAL(clicked()));
 
     // Never show the tabBar bar
     this->tabBar->setTabBarShown(false);
@@ -88,9 +90,15 @@ void TakeoffWidget::reset()
 
 void TakeoffWidget::keyPressEvent(QKeyEvent *event)
 {
+    // Show the search area
     if (this->tabBar->currentIndex() != 1) {
-        this->searchWidget->setSearchText(event->text());
+        this->searchWidget->clearSearchText();
+        this->searchWidget->addSearchText(event);
         this->tabBar->setCurrentIndex(1);
+
+    // Add text to the search box
+    } else {
+        this->searchWidget->addSearchText(event);
     }
 }
 

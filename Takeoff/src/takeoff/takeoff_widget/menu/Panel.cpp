@@ -119,6 +119,14 @@ void Panel::removeAllLaunchers()
 // **********                      GET/SET/IS                      ********** //
 // ************************************************************************** //
 
+Takeoff::Launcher *Panel::getLauncher(int index) const
+{
+    if (this->launchers.length() == 0)
+        return NULL;
+    else
+        return this->launchers.at(index);
+}
+
 bool Panel::isFull() const
 {
     return this->launchers.length() >= this->numColumns * this->numRows;

@@ -67,7 +67,7 @@ signals:
      */
     void clicked() const;
 
-private slots:
+public slots:
 
     /**
      * Runs the application when the icon is clicked.

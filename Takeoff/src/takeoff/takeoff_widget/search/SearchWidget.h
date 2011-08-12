@@ -44,10 +44,15 @@ public:
     //--------------------------------------------------------------------------
 
     /**
-     * Sets the specified text into the search box.
+     * Concatenates the specified text into the search box.
      * @param text The text.
      */
-    void setSearchText(const QString &text);
+    void addSearchText(QKeyEvent *event);
+
+    /**
+     * Clears the search box.
+     */
+    void clearSearchText();
 
 private slots:
 
@@ -63,6 +68,11 @@ signals:
      * Signal that is emitted whenever the user click in the go back button.
      */
     void exitSearch();
+
+    /**
+     * Signal that is emited whenever the user click in a launcher.
+     */
+    void clicked();
 
 private:
 

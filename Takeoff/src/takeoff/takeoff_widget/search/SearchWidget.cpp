@@ -45,7 +45,8 @@ SearchWidget::SearchWidget(QGraphicsWidget *parent)
 
     this->searchBox->setMaximumWidth(300);
     this->searchBox->setClearButtonShown(true);
-    connect(this->searchBox, SIGNAL(textEdited(QString)),
+    this->searchBox->setFocusPolicy(Qt::NoFocus);
+    connect(this->searchBox, SIGNAL(textChanged(QString)),
             this, SLOT(search(QString)));
 
     // Add the widgets
@@ -85,6 +86,7 @@ void SearchWidget::search(const QString &text)
         // If the application match with the search
         if (reg.exactMatch(name)) {
             Takeoff::Launcher *aux = new Takeoff::Launcher(launcher);
+            connect(aux, SIGNAL(clicked()), this, SIGNAL(clicked()));
             this->resultsPanel->addLauncher(aux);
         }
 
@@ -94,12 +96,25 @@ void SearchWidget::search(const QString &text)
 
 
 // ************************************************************************** //
-// **********                      GET/SET/IS                      ********** //
+// **********                    PUBLIC METHODS                    ********** //
 // ************************************************************************** //
 
-void SearchWidget::setSearchText(const QString &text)
+void SearchWidget::addSearchText(QKeyEvent *event)
 {
-    this->searchBox->setText(text);
-    this->searchBox->setFocus(); // TODO Fix the focus!!
+    if (event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return) {
+        Takeoff::Launcher *launcher = this->resultsPanel->getLauncher(0);
+        if (launcher != NULL)
+            launcher->runApplication();
+
+    } else if (event->key() == Qt::Key_Backspace)
+        this->searchBox->setText(this->searchBox->text().mid(
+                0, this->searchBox->text().length()-1));
+    else
+        this->searchBox->setText(this->searchBox->text() + event->text());
+}
+
+void SearchWidget::clearSearchText()
+{
+    this->searchBox->setText("");
     this->resultsPanel->removeAllLaunchers();
 }

@@ -63,6 +63,13 @@ public:
     //--------------------------------------------------------------------------
 
     /**
+     * Returns the specified launcher or NULL if any launcher is not available.
+     * @param  index The index of the launcher.
+     * @return The launcher.
+     */
+    Takeoff::Launcher *getLauncher(int index) const;
+
+    /**
      * Indicates if the panel is full (have 32 launchers) or no.
      * @return If is full or not.
      */
