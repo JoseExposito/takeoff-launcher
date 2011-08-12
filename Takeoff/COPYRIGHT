@@ -1,19 +1,22 @@
+
 [+] Author and developer:
 
- José Expósito <jose.exposito89@gmail.com> Copyright (C) 2011
+    José Expósito <jose.exposito89@gmail.com> Copyright (C) 2011
 
 
 [+] Thanks to:
 
- Manu Tortosa for add the support for translations
+    Manu Tortosa for add the support for translations
+
 
 [+] Translations:
 
- Manu Tortosa - Catalá
- Adrián Chaves Fernández (Gallaecio) - Galego
+    Manu Tortosa - Catalá
+    Adrián Chaves Fernández (Gallaecio) - Galego
+    Fabian B. - German
  
 
 --------------------------------------------------------------------------------
 
 Special thanks to Александр Соколов for the qtxdg library, placed on
-/src/takeoff/model/qtxdg/ and licensed under GPLv3.
+/src/takeoff/model/menu/qtxdg and licensed under GPLv3.

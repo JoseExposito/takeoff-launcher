@@ -24,9 +24,11 @@ add_subdirectory(translations)
 add_subdirectory(src/takeoff)
 add_subdirectory(src/takeoff/config)
 add_subdirectory(src/takeoff/model/favorites)
-add_subdirectory(src/takeoff/model/qtxdg)
+add_subdirectory(src/takeoff/model/menu)
+add_subdirectory(src/takeoff/model/menu/qtxdg)
 add_subdirectory(src/takeoff/takeoff_widget)
-add_subdirectory(src/takeoff/takeoff_widget/parts)
+add_subdirectory(src/takeoff/takeoff_widget/menu)
+add_subdirectory(src/takeoff/takeoff_widget/search)
 
 # Add ui files
 kde4_add_ui_files(Takeoff_SRCS src/takeoff/config/ConfigForm.ui)
@@ -42,5 +44,5 @@ target_link_libraries(plasma_applet_takeoff
 
 install(TARGETS plasma_applet_takeoff
         DESTINATION ${PLUGIN_INSTALL_DIR})
-install(FILES src/takeoff/desktop/plasma-applet-takeoff.desktop
+install(FILES installation/plasma-applet-takeoff.desktop
         DESTINATION ${SERVICES_INSTALL_DIR})
