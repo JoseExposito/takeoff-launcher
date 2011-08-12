@@ -14,6 +14,10 @@
 
  - [http://takeoff-launcher.googlecode.com/files/takeoff-0.2.tar.gz Download source code]
 
+ - [http://software.opensuse.org/search?q=plasmoid-takeoff&baseproject=ALL&lang=en&include_home=true&exclude_debug=true OpenSuse packages (thanks to Caig)]
+
+ - [http://dl.dropbox.com/u/4127065/debian%20package/ocelot/takeoff_0.2.0.deb Kubuntu 11.04 and 11.10 - 32 bits (thanks to nowardev)]
+
 
  * *Takeoff v0.1.5:* (A small release for the users that have problems with the plasmoid after reboot)
 
