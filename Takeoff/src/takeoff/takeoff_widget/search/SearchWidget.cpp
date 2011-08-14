@@ -102,6 +102,7 @@ void SearchWidget::search(const QString &text)
 void SearchWidget::addSearchText(QKeyEvent *event)
 {
     if (event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return) {
+        emit this->clicked();
         Takeoff::Launcher *launcher = this->resultsPanel->getLauncher(0);
         if (launcher != NULL)
             launcher->runApplication();
