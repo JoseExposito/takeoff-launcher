@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://code.google.com/p/takeoff-launcher/issues/list\n"
-"POT-Creation-Date: 2011-08-04 23:11+0200\n"
-"PO-Revision-Date: 2011-08-04 23:12+0200\n"
+"POT-Creation-Date: 2011-08-14 17:50+0200\n"
+"PO-Revision-Date: 2011-08-14 17:51+0200\n"
 "Last-Translator: José Expósito\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: \n"
@@ -19,82 +19,88 @@ msgstr ""
 
 #. i18n: file: src/takeoff/config/ConfigForm.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, ConfigForm)
-#: build/ui_ConfigForm.h:147 translations/rc.cpp:3 rc.cpp:3
+#: build/ui_ConfigForm.h:153 translations/rc.cpp:3 rc.cpp:3
 msgid "Form"
 msgstr "Formulario"
 
 #. i18n: file: src/takeoff/config/ConfigForm.ui:20
-#. i18n: ectx: property (text), widget (QLabel, label_4)
-#: build/ui_ConfigForm.h:148 translations/rc.cpp:6 rc.cpp:6
-msgid "Launcher size"
-msgstr "Tamaño del lanzador"
-
-#. i18n: file: src/takeoff/config/ConfigForm.ui:40
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#: build/ui_ConfigForm.h:149 translations/rc.cpp:9 rc.cpp:9
-msgid "Separation between launchers"
-msgstr "Separación entre lanzadores"
-
-#. i18n: file: src/takeoff/config/ConfigForm.ui:57
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: build/ui_ConfigForm.h:150 translations/rc.cpp:12 rc.cpp:12
-msgid "Number of rows"
-msgstr "Número de filas"
-
-#. i18n: file: src/takeoff/config/ConfigForm.ui:64
-#. i18n: ectx: property (text), widget (QLabel, label_3)
-#: build/ui_ConfigForm.h:151 translations/rc.cpp:15 rc.cpp:15
-msgid "Number of columns"
-msgstr "Número de columnas"
-
-#. i18n: file: src/takeoff/config/ConfigForm.ui:91
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: build/ui_ConfigForm.h:152 translations/rc.cpp:18 rc.cpp:18
+#: build/ui_ConfigForm.h:154 translations/rc.cpp:6 rc.cpp:6
 msgid "Icon"
 msgstr "Icono"
 
-#. i18n: file: src/takeoff/config/ConfigForm.ui:98
-#. i18n: ectx: property (text), widget (QCheckBox, showXdgMenu)
-#: build/ui_ConfigForm.h:153 translations/rc.cpp:21 rc.cpp:21
-msgid "Show standard menu"
-msgstr "Mostrar menú estándar"
-
-#. i18n: file: src/takeoff/config/ConfigForm.ui:105
-#. i18n: ectx: property (text), widget (QCheckBox, showAllApplications)
-#: build/ui_ConfigForm.h:154 translations/rc.cpp:24 rc.cpp:24
-msgid "Show \"All Applications\" category"
-msgstr "Mostrar categoría \"Todas las Aplicaciones\""
-
-#. i18n: file: src/takeoff/config/ConfigForm.ui:112
+#. i18n: file: src/takeoff/config/ConfigForm.ui:27
 #. i18n: ectx: property (text), widget (QCheckBox, showFavorites)
-#: build/ui_ConfigForm.h:155 translations/rc.cpp:27 rc.cpp:27
+#: build/ui_ConfigForm.h:155 translations/rc.cpp:9 rc.cpp:9
 msgid "Show \"Favorites\" category"
 msgstr "Mostrar categoría \"Favoritos\""
 
-#. i18n: file: src/takeoff/config/ConfigForm.ui:144
+#. i18n: file: src/takeoff/config/ConfigForm.ui:34
+#. i18n: ectx: property (text), widget (QCheckBox, showAllApplications)
+#: build/ui_ConfigForm.h:156 translations/rc.cpp:12 rc.cpp:12
+msgid "Show \"All Applications\" category"
+msgstr "Mostrar categoría \"Todas las Aplicaciones\""
+
+#. i18n: file: src/takeoff/config/ConfigForm.ui:41
+#. i18n: ectx: property (text), widget (QCheckBox, showXdgMenu)
+#: build/ui_ConfigForm.h:157 translations/rc.cpp:15 rc.cpp:15
+msgid "Show standard menu"
+msgstr "Mostrar menú estándar"
+
+#. i18n: file: src/takeoff/config/ConfigForm.ui:48
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#: build/ui_ConfigForm.h:158 translations/rc.cpp:18 rc.cpp:18
+msgid "Launcher size"
+msgstr "Tamaño del lanzador"
+
+#. i18n: file: src/takeoff/config/ConfigForm.ui:68
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: build/ui_ConfigForm.h:159 translations/rc.cpp:21 rc.cpp:21
+msgid "Separation between launchers"
+msgstr "Separación entre lanzadores"
+
+#. i18n: file: src/takeoff/config/ConfigForm.ui:85
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: build/ui_ConfigForm.h:160 translations/rc.cpp:24 rc.cpp:24
+msgid "Number of rows"
+msgstr "Número de filas"
+
+#. i18n: file: src/takeoff/config/ConfigForm.ui:102
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#: build/ui_ConfigForm.h:161 translations/rc.cpp:27 rc.cpp:27
+msgid "Number of columns"
+msgstr "Número de columnas"
+
+#. i18n: file: src/takeoff/config/ConfigForm.ui:119
 #. i18n: ectx: property (text), widget (QCheckBox, rememberLastTab)
-#: build/ui_ConfigForm.h:157 translations/rc.cpp:30 rc.cpp:30
+#: build/ui_ConfigForm.h:162 translations/rc.cpp:30 rc.cpp:30
 msgid "Remember last tab"
 msgstr "Recordar última pestaña"
 
-#: src/takeoff/MainWindow.cpp:85
+#. i18n: file: src/takeoff/config/ConfigForm.ui:151
+#. i18n: ectx: property (text), widget (QCheckBox, showIconText)
+#: build/ui_ConfigForm.h:164 translations/rc.cpp:33 rc.cpp:33
+msgid "Show icon text"
+msgstr "Mostrar el texto de los iconos"
+
+#: src/takeoff/MainWindow.cpp:86
 msgid "General settings"
 msgstr "Preferencias generales"
 
-#: src/takeoff/MainWindow.cpp:127
+#: src/takeoff/MainWindow.cpp:125
 msgid "Favorites"
 msgstr "Favoritos"
 
-#: src/takeoff/MainWindow.cpp:148
+#: src/takeoff/MainWindow.cpp:138
 msgid "All Applications"
 msgstr "Todas las Aplicaciones"
 
-#: translations/rc.cpp:31 rc.cpp:31
+#: translations/rc.cpp:34 rc.cpp:34
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "José Expósito"
 
-#: translations/rc.cpp:32 rc.cpp:32
+#: translations/rc.cpp:35 rc.cpp:35
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "jose.exposito89@gmail.com"

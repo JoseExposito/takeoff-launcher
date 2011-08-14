@@ -53,6 +53,8 @@ ConfigForm::ConfigForm(QWidget *parent)
             KIcon(this->cfg->getSettings(Config::ICON).toString()));
     this->ui->rememberLastTab->setChecked(
             this->cfg->getSettings(Config::REMEMBER_LAST_TAB).toBool());
+    this->ui->showIconText->setChecked(
+            this->cfg->getSettings(Config::SHOW_ICON_TEXT).toBool());
 }
 
 ConfigForm::~ConfigForm()
@@ -118,4 +120,10 @@ void ConfigForm::on_rememberLastTab_clicked()
 {
     this->cfg->setSettings(Config::REMEMBER_LAST_TAB,
             this->ui->rememberLastTab->isChecked());
+}
+
+void ConfigForm::on_showIconText_clicked()
+{
+    this->cfg->setSettings(Config::SHOW_ICON_TEXT,
+            this->ui->showIconText->isChecked());
 }

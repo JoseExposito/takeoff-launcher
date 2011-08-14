@@ -58,6 +58,9 @@ private slots:
 
     void on_rememberLastTab_clicked();
 
+
+    void on_showIconText_clicked();
+
 private:
 
     Ui::ConfigForm *ui;

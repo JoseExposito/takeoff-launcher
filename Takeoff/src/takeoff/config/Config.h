@@ -56,6 +56,7 @@ public:
     static const char *NUM_COLUMNS;
     static const char *ICON;
     static const char *REMEMBER_LAST_TAB;
+    static const char *SHOW_ICON_TEXT;
 
     /**
      * Returns the specified property.
@@ -78,6 +79,15 @@ public:
     QString getConfigFilePath() const;
 
 private:
+
+    /**
+     * Load the specified property. If is not available, puts the default value.
+     * @param property The property to load. Is one of the Config::Property.
+     * @param defaultValue The value to set if the property doesn't exist.
+     */
+    void loadProperty(const char *property, const QVariant &defaultValue);
+
+    //--------------------------------------------------------------------------
 
     /// Object to access to the settings
     QSettings *settings;

@@ -96,10 +96,10 @@ void MainWindow::createConfigurationInterface(KConfigDialog *parent)
 
 void MainWindow::loadConfig()
 {
-    this->takeoff->reset();
-
     Config::loadConfig();
     Menu::loadMenu();
+
+    this->takeoff->reset();
 
     Config *cfg = Config::getInstance();
 

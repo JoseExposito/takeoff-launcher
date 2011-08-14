@@ -22,6 +22,8 @@
 #include <QtCore/QVariant>
 #include <QtCore/QDir>
 #include <QtCore/QSettings>
+#include <QtGui/QApplication>
+#include <QtGui/QDesktopWidget>
 #include <KDE/KStandardDirs>
 #include <KDE/KIcon>
 
@@ -58,6 +60,7 @@ const char *Config::NUM_ROWS              = "Takeoff/NumRows";
 const char *Config::NUM_COLUMNS           = "Takeoff/NumColumns";
 const char *Config::ICON                  = "Takeoff/Icon";
 const char *Config::REMEMBER_LAST_TAB     = "Takeoff/RememberLastTab";
+const char *Config::SHOW_ICON_TEXT        = "Takeoff/ShowIconText";
 
 
 // ************************************************************************** //
@@ -66,53 +69,52 @@ const char *Config::REMEMBER_LAST_TAB     = "Takeoff/RememberLastTab";
 
 Config::Config()
 {
-    QFile configFile(this->getConfigFilePath());
+    // Get the distro icon if is available, else put the default icon
+    QString icon = KIcon("start-here-branding").isNull()
+            ? "start-here-kde"
+            : "start-here-branding";
 
-    // If the configuration file doesn't exist create it
-    if (!configFile.exists()) {
-        // Set the distro icon if is available, else put the default icon
-        QString icon = KIcon("start-here-branding").isNull()
-                ? "start-here-kde"
-                : "start-here-branding";
+    // Calculate the aspect ratio of the icons (size, separation, rows...)
+    int launcherSize       = 80;
+    int launcherSeparation = 60;
+    int screenWidth        = QApplication::desktop()->width();
+    int screenHeight       = QApplication::desktop()->height();
+    int numRows    = screenHeight / (launcherSize + launcherSeparation) - 2;
+    int numColumns = screenWidth  / (launcherSize + launcherSeparation) - 2;
 
-        configFile.open(QFile::WriteOnly);
-
-        QString content(
-            "[Takeoff]\n"
-            "ShowFavorites=true\n"
-            "ShowAllApplications=true\n"
-            "ShowXdgMenu=true\n"
-            "LauncherSize=60\n"
-            "SeparationBetweenLaunchers=40\n"
-            "NumRows=3\n"
-            "NumColumns=6\n"
-            "Icon=" + icon + "\n"
-            "RememberLastTab=false"
-        );
-
-        configFile.write(content.toLocal8Bit().data());
-        configFile.close();
-    }
+    // Adjust columns and rows size
+    if (numRows <= 2)     numRows = 2;
+    if (numRows >= 10)    numRows = 10;
+    if (numColumns <= 2)  numColumns = 2;
+    if (numColumns >= 20) numColumns = 20;
 
     // Load the configuration into the QHash
     this->settings = new QSettings(this->getConfigFilePath(),
             QSettings::IniFormat, this);
 
-    this->hashSettings.insert(SHOW_FAVORITES,
-            this->settings->value(SHOW_FAVORITES));
-    this->hashSettings.insert(SHOW_ALL_APPLICATIONS,
-            this->settings->value(SHOW_ALL_APPLICATIONS));
-    this->hashSettings.insert(SHOW_XDG_MENU,
-            this->settings->value(SHOW_XDG_MENU));
-    this->hashSettings.insert(LAUNCHER_SIZE,
-            this->settings->value(LAUNCHER_SIZE));
-    this->hashSettings.insert(SEPARATION_BETWEEN_LAUNCHERS,
-            this->settings->value(SEPARATION_BETWEEN_LAUNCHERS));
-    this->hashSettings.insert(NUM_ROWS, this->settings->value(NUM_ROWS));
-    this->hashSettings.insert(NUM_COLUMNS, this->settings->value(NUM_COLUMNS));
-    this->hashSettings.insert(ICON, this->settings->value(ICON));
-    this->hashSettings.insert(REMEMBER_LAST_TAB,
-            this->settings->value(REMEMBER_LAST_TAB));
+    this->loadProperty(SHOW_FAVORITES, true);
+    this->loadProperty(SHOW_ALL_APPLICATIONS, true);
+    this->loadProperty(SHOW_XDG_MENU, true);
+    this->loadProperty(LAUNCHER_SIZE, launcherSize);
+    this->loadProperty(SEPARATION_BETWEEN_LAUNCHERS, launcherSeparation);
+    this->loadProperty(NUM_ROWS, numRows);
+    this->loadProperty(NUM_COLUMNS, numColumns);
+    this->loadProperty(ICON, icon);
+    this->loadProperty(REMEMBER_LAST_TAB, false);
+    this->loadProperty(SHOW_ICON_TEXT, true);
+}
+
+
+// ************************************************************************** //
+// **********                   PRIVATE METHODS                    ********** //
+// ************************************************************************** //
+
+void Config::loadProperty(const char *property, const QVariant &defaultValue)
+{
+    if (!this->settings->contains(property))
+        this->settings->setValue(property, defaultValue);
+
+    this->hashSettings.insert(property, this->settings->value(property));
 }
 
 

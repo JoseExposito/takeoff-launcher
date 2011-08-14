@@ -24,6 +24,7 @@
 #include <KDE/Plasma/IconWidget>
 #include <KDE/Plasma/ToolTipContent>
 #include <KDE/Plasma/ToolTipManager>
+#include "../config/Config.h"
 using namespace Takeoff;
 
 // ************************************************************************** //
@@ -66,21 +67,24 @@ void Launcher::runApplication() const
 void Launcher::init()
 {
     // Set the icon
-    // TODO Allow to show only the icon
-    Plasma::IconWidget *iconWidget = new Plasma::IconWidget(
-            this->icon, this->name, this);
-    connect(iconWidget, SIGNAL(clicked()), this, SLOT(runApplication()));
-    connect(iconWidget, SIGNAL(clicked()), this, SIGNAL(clicked()));
+    Plasma::IconWidget *icon = new Plasma::IconWidget(this->icon, "", this);
+
+    Config *cfg = Config::getInstance();
+    if (cfg->getSettings(Config::SHOW_ICON_TEXT).toBool())
+        icon->setText(this->name);
+
+    connect(icon, SIGNAL(clicked()), this, SLOT(runApplication()));
+    connect(icon, SIGNAL(clicked()), this, SIGNAL(clicked()));
 
     // Set the tooltip
     Plasma::ToolTipContent data;
     data.setMainText(this->name);
     data.setImage(this->icon.pixmap(32, 32));
-    Plasma::ToolTipManager::self()->setContent(iconWidget, data);
+    Plasma::ToolTipManager::self()->setContent(icon, data);
 
     // Add the icon to the layout
     QGraphicsLinearLayout *l = new QGraphicsLinearLayout(this);
-    l->addItem(iconWidget);
+    l->addItem(icon);
     this->setLayout(l);
 }
 

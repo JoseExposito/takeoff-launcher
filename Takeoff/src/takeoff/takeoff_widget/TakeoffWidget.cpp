@@ -24,6 +24,7 @@
 #include "Launcher.h"
 #include "menu/MenuWidget.h"
 #include "search/SearchWidget.h"
+#include "../config/Config.h"
 using namespace Takeoff;
 using namespace TakeoffPrivate;
 using namespace Plasma;
@@ -61,6 +62,8 @@ void TakeoffWidget::addMenuLauncher(int tabIndex, Launcher *launcher)
 
 void TakeoffWidget::reset()
 {
+    Config::loadConfig();
+
     // Contruct widgets
     delete this->tabBar;
     this->tabBar       = new TabBar(this);
