@@ -1,4 +1,7 @@
 [+] Current code:
+    - By default the size and the separation between icons is adjusted to the
+      screen size
+      
     - Added the following translations:
       Italian (Caig)
       Polish (Marcin Sągol)
