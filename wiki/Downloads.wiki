@@ -2,7 +2,7 @@
 
 <br/>
 
-*_ Bellow you can download packages for your favorite distro or download the source code to compile and install Takeoff in any distro. Please, consider [http://goo.gl/lTuZX make a donation] to support the project _*
+* Bellow you can download packages for your favorite distro or download the source code to compile and install Takeoff in any distro. Please, consider [http://goo.gl/lTuZX make a donation] to support the project *
 
 <br/>
 <hr>
@@ -12,10 +12,12 @@
  * *Chakra:* Install Takeoff from the official repository
   $ sudo pacman -S kdeplasma-addons-applets-takeoff
 
+
  * *Ubuntu:* Add this PPA
   $ sudo apt-add-repository ppa:ferramroberto/nattyextra <br/>
   $ sudo apt-get update <br/>
   $ sudo apt-get install takeoff
+
 
  * *!OpenSuse:* Download and install this packages: (thanks to Caig)
   - http://software.opensuse.org/search?q=plasmoid-takeoff&baseproject=ALL&lang=en&include_home=true&exclude_debug=true
@@ -23,7 +25,7 @@
  * *Arch Linux:* Available in AUR
   - http://aur.archlinux.org/packages.php?ID=51137
 
- * For other distros you can download and compile the *source code*:
+ * For other distros you can download and compile the *source code*: <br/>
   * *Takeoff v0.2:*
    - [http://takeoff-launcher.googlecode.com/files/takeoff-0.2.tar.gz Download source code]
   * *Takeoff v0.1.5:*
