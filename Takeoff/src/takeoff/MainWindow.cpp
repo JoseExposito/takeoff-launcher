@@ -47,7 +47,7 @@ K_EXPORT_PLASMA_APPLET(takeoff, MainWindow)
 // ************************************************************************** //
 // **********              CONSTRUCTORS AND DESTRUCTOR             ********** //
 // ************************************************************************** //
-
+#include <QtGui/QGraphicsLinearLayout>
 MainWindow::MainWindow(QObject *parent, const QVariantList &args)
         : Plasma::PopupApplet(parent, args),
           takeoff(new TakeoffWidget(this))
@@ -55,9 +55,6 @@ MainWindow::MainWindow(QObject *parent, const QVariantList &args)
     // Plasmoid aspect
     this->setBackgroundHints(DefaultBackground);
     this->setAspectRatioMode(Plasma::IgnoreAspectRatio);
-
-    this->takeoff->setMinimumWidth(QApplication::desktop()->width());
-    this->takeoff->setMinimumHeight(QApplication::desktop()->height());
 
     // Hide the popup when a launcher is clicked
     connect(this->takeoff, SIGNAL(clicked()), this, SLOT(hidePopup()));
@@ -80,8 +77,27 @@ void MainWindow::loadConfig()
 
     Config *cfg = Config::getInstance();
 
+    // Set the popup icon
     this->setPopupIcon(KIcon(cfg->getSettings(Config::ICON).toString()));
 
+    // Set fullscreen mode or not
+    if (cfg->getSettings(Config::FULL_SCREEN).toBool()) {
+        this->takeoff->setMinimumWidth(QApplication::desktop()->width());
+        this->takeoff->setMinimumHeight(QApplication::desktop()->height());
+    } else {
+        int numRows      = cfg->getSettings(Config::NUM_ROWS).toInt();
+        int numColumns   = cfg->getSettings(Config::NUM_COLUMNS).toInt();
+        int launcherSize = cfg->getSettings(Config::LAUNCHER_SIZE).toInt();
+        int sep =cfg->getSettings(Config::SEPARATION_BETWEEN_LAUNCHERS).toInt();
+
+        this->takeoff->setMinimumWidth(numColumns*(launcherSize+sep) + 500);
+        this->takeoff->setMaximumWidth(numColumns*(launcherSize+sep) + 500);
+
+        this->takeoff->setMinimumHeight(numRows*(launcherSize+sep) + 300);
+        this->takeoff->setMaximumHeight(numRows*(launcherSize+sep) + 300);
+    }
+
+    // Load different categories
     if (cfg->getSettings(Config::SHOW_FAVORITES).toBool())
         this->loadFavorites();
 
@@ -113,11 +129,6 @@ void MainWindow::createConfigurationInterface(KConfigDialog *parent)
 
     connect(parent, SIGNAL(applyClicked()), this, SLOT(loadConfig()));
     connect(parent, SIGNAL(okClicked()), this, SLOT(loadConfig()));
-}
-
-void MainWindow::keyPressEvent(QKeyEvent *event)
-{
-    this->takeoff->keyPressed(event);
 }
 
 

@@ -61,6 +61,7 @@ const char *Config::NUM_COLUMNS           = "Takeoff/NumColumns";
 const char *Config::ICON                  = "Takeoff/Icon";
 const char *Config::REMEMBER_LAST_TAB     = "Takeoff/RememberLastTab";
 const char *Config::SHOW_ICON_TEXT        = "Takeoff/ShowIconText";
+const char *Config::FULL_SCREEN           = "Takeoff/FullScreen";
 
 
 // ************************************************************************** //
@@ -102,6 +103,7 @@ Config::Config()
     this->loadProperty(ICON, icon);
     this->loadProperty(REMEMBER_LAST_TAB, false);
     this->loadProperty(SHOW_ICON_TEXT, true);
+    this->loadProperty(FULL_SCREEN, true);
 }
 
 

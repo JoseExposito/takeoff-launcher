@@ -55,6 +55,8 @@ ConfigForm::ConfigForm(QWidget *parent)
             this->cfg->getSettings(Config::REMEMBER_LAST_TAB).toBool());
     this->ui->showIconText->setChecked(
             this->cfg->getSettings(Config::SHOW_ICON_TEXT).toBool());
+    this->ui->fullScreen->setChecked(
+            this->cfg->getSettings(Config::FULL_SCREEN).toBool());
 }
 
 ConfigForm::~ConfigForm()
@@ -126,4 +128,10 @@ void ConfigForm::on_showIconText_clicked()
 {
     this->cfg->setSettings(Config::SHOW_ICON_TEXT,
             this->ui->showIconText->isChecked());
+}
+
+void ConfigForm::on_fullScreen_clicked()
+{
+    this->cfg->setSettings(Config::FULL_SCREEN,
+            this->ui->fullScreen->isChecked());
 }

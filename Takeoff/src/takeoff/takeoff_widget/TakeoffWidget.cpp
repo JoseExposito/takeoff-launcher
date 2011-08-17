@@ -34,7 +34,7 @@ using namespace Plasma;
 // ************************************************************************** //
 
 TakeoffWidget::TakeoffWidget(QGraphicsWidget *parent)
-        : QGraphicsWidget(parent),
+        : Plasma::Applet(parent),
           tabBar(NULL),
           menuWidget(NULL),
           searchWidget(NULL)
@@ -96,7 +96,7 @@ void TakeoffWidget::reset()
 
 //------------------------------------------------------------------------------
 
-void TakeoffWidget::keyPressed(QKeyEvent *event)
+void TakeoffWidget::keyPressEvent(QKeyEvent *event)
 {
     // Show the search area
     if (this->tabBar->currentIndex() != 1) {

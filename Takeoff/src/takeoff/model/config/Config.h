@@ -57,6 +57,7 @@ public:
     static const char *ICON;
     static const char *REMEMBER_LAST_TAB;
     static const char *SHOW_ICON_TEXT;
+    static const char *FULL_SCREEN;
 
     /**
      * Returns the specified property.

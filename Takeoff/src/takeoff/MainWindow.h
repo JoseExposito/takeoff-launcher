@@ -59,12 +59,6 @@ public:
      */
     virtual void createConfigurationInterface(KConfigDialog *parent);
 
-    /**
-     * Inherit from QGraphicsItem. Called when a key is pressed. Launch the
-     * search dialog.
-     */
-    virtual void keyPressEvent(QKeyEvent *event);
-
 private slots:
 
     /// Loads the configuration using the private methods load*

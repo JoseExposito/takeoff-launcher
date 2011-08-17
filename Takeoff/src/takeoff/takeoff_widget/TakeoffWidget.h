@@ -21,7 +21,7 @@
 #ifndef TAKEOFFWIDGET_TAKEOFFWIDGET_H
 #define TAKEOFFWIDGET_TAKEOFFWIDGET_H
 
-#include <QtGui/QGraphicsWidget>
+#include <KDE/Plasma/Applet>
 namespace Plasma         { class TabBar; }
 namespace Takeoff        { class Launcher; }
 namespace TakeoffPrivate { class MenuWidget; class SearchWidget; }
@@ -33,7 +33,7 @@ namespace Takeoff {
  * interface, with the categories and launchers. The second area is the search
  * widget, that will be show when the user begin to type.
  */
-class TakeoffWidget : public QGraphicsWidget
+class TakeoffWidget : public Plasma::Applet
 {
     Q_OBJECT
 
@@ -71,9 +71,10 @@ public:
     //--------------------------------------------------------------------------
 
     /**
-     * Called when a key is pressed. Launch the search dialog.
+     * Inherit from QGraphicsItem. Called when a key is pressed. Launch the
+     * search dialog.
      */
-    void keyPressed(QKeyEvent *event);
+    virtual void keyPressEvent(QKeyEvent *event);
 
     //--------------------------------------------------------------------------
 

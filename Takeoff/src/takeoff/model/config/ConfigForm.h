@@ -61,6 +61,8 @@ private slots:
 
     void on_showIconText_clicked();
 
+    void on_fullScreen_clicked();
+
 private:
 
     Ui::ConfigForm *ui;
