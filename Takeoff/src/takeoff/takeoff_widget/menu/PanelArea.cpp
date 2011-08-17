@@ -132,8 +132,8 @@ void PanelArea::addLauncher(Launcher *launcher)
 
 void PanelArea::removeAllLaunchers()
 {
-    int count = this->panelTabBar->count();
-    for (int n=0; n<count; n++) {
+    int count = this->panelTabBar->count()-1;
+    for (int n=count; n>=0; n--) {
         Panel *panel = (Panel*)this->panelTabBar->tabAt(n);
         this->panelTabBar->removeTab(n);
         this->panelSelector->removeTab(n);

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://code.google.com/p/takeoff-launcher/issues/"
 "list\n"
-"POT-Creation-Date: 2011-08-14 17:50+0200\n"
+"POT-Creation-Date: 2011-08-17 14:18+0200\n"
 "PO-Revision-Date: 2011-08-12 20:33+0200\n"
 "Last-Translator: Caig <giacomosrv@gmail.com>\n"
 "Language-Team: Italian <>\n"
@@ -18,67 +18,67 @@ msgstr ""
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. i18n: file: src/takeoff/config/ConfigForm.ui:14
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, ConfigForm)
 #: build/ui_ConfigForm.h:153 translations/rc.cpp:3 rc.cpp:3
 msgid "Form"
 msgstr "Modulo"
 
-#. i18n: file: src/takeoff/config/ConfigForm.ui:20
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:20
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: build/ui_ConfigForm.h:154 translations/rc.cpp:6 rc.cpp:6
 msgid "Icon"
 msgstr "Icona"
 
-#. i18n: file: src/takeoff/config/ConfigForm.ui:27
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:27
 #. i18n: ectx: property (text), widget (QCheckBox, showFavorites)
 #: build/ui_ConfigForm.h:155 translations/rc.cpp:9 rc.cpp:9
 msgid "Show \"Favorites\" category"
 msgstr "Mostra la categoria Preferiti"
 
-#. i18n: file: src/takeoff/config/ConfigForm.ui:34
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:34
 #. i18n: ectx: property (text), widget (QCheckBox, showAllApplications)
 #: build/ui_ConfigForm.h:156 translations/rc.cpp:12 rc.cpp:12
 msgid "Show \"All Applications\" category"
 msgstr "Mostra la categoria Tutte le applicazioni"
 
-#. i18n: file: src/takeoff/config/ConfigForm.ui:41
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:41
 #. i18n: ectx: property (text), widget (QCheckBox, showXdgMenu)
 #: build/ui_ConfigForm.h:157 translations/rc.cpp:15 rc.cpp:15
 msgid "Show standard menu"
 msgstr "Mostra il menu standard"
 
-#. i18n: file: src/takeoff/config/ConfigForm.ui:48
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:48
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: build/ui_ConfigForm.h:158 translations/rc.cpp:18 rc.cpp:18
 msgid "Launcher size"
 msgstr "Dimensione degli avviatori"
 
-#. i18n: file: src/takeoff/config/ConfigForm.ui:68
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:68
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: build/ui_ConfigForm.h:159 translations/rc.cpp:21 rc.cpp:21
 msgid "Separation between launchers"
 msgstr "Separazione tra gli avviatori"
 
-#. i18n: file: src/takeoff/config/ConfigForm.ui:85
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:85
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: build/ui_ConfigForm.h:160 translations/rc.cpp:24 rc.cpp:24
 msgid "Number of rows"
 msgstr "Numero di righe"
 
-#. i18n: file: src/takeoff/config/ConfigForm.ui:102
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:102
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: build/ui_ConfigForm.h:161 translations/rc.cpp:27 rc.cpp:27
 msgid "Number of columns"
 msgstr "Numero di colonne"
 
-#. i18n: file: src/takeoff/config/ConfigForm.ui:119
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:119
 #. i18n: ectx: property (text), widget (QCheckBox, rememberLastTab)
 #: build/ui_ConfigForm.h:162 translations/rc.cpp:30 rc.cpp:30
 msgid "Remember last tab"
 msgstr "Ricorda l'ultima scheda"
 
-#. i18n: file: src/takeoff/config/ConfigForm.ui:151
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:151
 #. i18n: ectx: property (text), widget (QCheckBox, showIconText)
 #: build/ui_ConfigForm.h:164 translations/rc.cpp:33 rc.cpp:33
 msgid "Show icon text"
@@ -88,13 +88,22 @@ msgstr ""
 msgid "General settings"
 msgstr "Impostazioni generali"
 
-#: src/takeoff/MainWindow.cpp:125
+#: src/takeoff/MainWindow.cpp:130
 msgid "Favorites"
 msgstr "Preferiti"
 
-#: src/takeoff/MainWindow.cpp:138
+#: src/takeoff/MainWindow.cpp:145
 msgid "All Applications"
 msgstr "Tutte le applicazioni"
+
+#: src/takeoff/takeoff_widget/Launcher.cpp:126
+msgid "Remove from favorites"
+msgstr ""
+
+#: src/takeoff/takeoff_widget/Launcher.cpp:129
+#, fuzzy
+msgid "Add to favorites"
+msgstr "Preferiti"
 
 #: translations/rc.cpp:34 rc.cpp:34
 msgctxt "NAME OF TRANSLATORS"
