@@ -2,8 +2,10 @@
 
 <br/>
 
-Bellow you can download packages for your favorite distro or download the source code to compile and install Takeoff in any distro. Please, consider [http://goo.gl/lTuZX make a donation] to support the project
+*_ Bellow you can download packages for your favorite distro or download the source code to compile and install Takeoff in any distro. Please, consider [http://goo.gl/lTuZX make a donation] to support the project _*
 
+<br/>
+<hr>
 <br/>
 
 
