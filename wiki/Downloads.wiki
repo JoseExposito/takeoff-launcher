@@ -2,31 +2,30 @@
 
 <br/>
 
- * *If you are a Chakra user, you can install Takeoff from the official repository:*
- $ sudo pacman -S kdeplasma-addons-applets-takeoff
-
- * *If you are an Arch Linux user, you can get the last version from AUR:*
- - http://aur.archlinux.org/packages.php?ID=51137
+== *INSTALLATION* ==
 
 
-<br/>
+ * *Chakra:* Install Takeoff from the official repository
+  $ sudo pacman -S kdeplasma-addons-applets-takeoff
 
- * *Takeoff v0.2:*
+ * *Ubuntu:* Add this PPA
+  $ sudo apt-add-repository ppa:ferramroberto/nattyextra <br/>
+  $ sudo apt-get update <br/>
+  $ sudo apt-get install takeoff
 
- - [http://takeoff-launcher.googlecode.com/files/takeoff-0.2.tar.gz Download source code]
+ * *OpenSuse:* Download and install this packages: (thanks to Caig)
+  - http://software.opensuse.org/search?q=plasmoid-takeoff&baseproject=ALL&lang=en&include_home=true&exclude_debug=true
 
- - [http://software.opensuse.org/search?q=plasmoid-takeoff&baseproject=ALL&lang=en&include_home=true&exclude_debug=true OpenSuse packages (thanks to Caig)]
+ * *Arch Linux:* Available in AUR
+  - http://aur.archlinux.org/packages.php?ID=51137
 
- * *Takeoff v0.1.5:* (A small release for the users that have problems with the plasmoid after reboot)
-
- - [https://takeoff-launcher.googlecode.com/files/takeoff-0.1.5.tar.gz Download source code]
-
- - [https://build.opensuse.org/package/show?package=takeoff&project=home%3AFaster3ck%3Afasterindesign Download packages for Fedora 15 (thanks to "faster")]
- 
-
- * *Takeoff v0.1:*
-
- - [http://takeoff-launcher.googlecode.com/files/takeoff-0.1.tar.gz Download source code]
+ * For other distros you can download and compile the *source code*:
+  * *Takeoff v0.2:*
+   - [http://takeoff-launcher.googlecode.com/files/takeoff-0.2.tar.gz Download source code]
+  * *Takeoff v0.1.5:*
+   - [https://takeoff-launcher.googlecode.com/files/takeoff-0.1.5.tar.gz Download source code]
+  * *Takeoff v0.1:*
+   - [http://takeoff-launcher.googlecode.com/files/takeoff-0.1.tar.gz Download source code]
 
 <br/>
 <hr>
