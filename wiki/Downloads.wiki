@@ -15,7 +15,7 @@ Bellow you can download packages for your favorite distro or download the source
   $ sudo apt-get update <br/>
   $ sudo apt-get install takeoff
 
- * *OpenSuse:* Download and install this packages: (thanks to Caig)
+ * *!OpenSuse:* Download and install this packages: (thanks to Caig)
   - http://software.opensuse.org/search?q=plasmoid-takeoff&baseproject=ALL&lang=en&include_home=true&exclude_debug=true
 
  * *Arch Linux:* Available in AUR
