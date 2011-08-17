@@ -68,6 +68,32 @@ MainWindow::MainWindow(QObject *parent, const QVariantList &args)
 
 
 // ************************************************************************** //
+// **********                    PRIVATE SLOTS                     ********** //
+// ************************************************************************** //
+
+void MainWindow::loadConfig()
+{
+    Config::loadConfig();
+    Menu::loadMenu();
+
+    this->takeoff->reset();
+
+    Config *cfg = Config::getInstance();
+
+    this->setPopupIcon(KIcon(cfg->getSettings(Config::ICON).toString()));
+
+    if (cfg->getSettings(Config::SHOW_FAVORITES).toBool())
+        this->loadFavorites();
+
+    if (cfg->getSettings(Config::SHOW_ALL_APPLICATIONS).toBool())
+        this->loadAllApplications();
+
+    if (cfg->getSettings(Config::SHOW_XDG_MENU).toBool())
+        this->loadXdgMenu();
+}
+
+
+// ************************************************************************** //
 // **********                    PUBLIC METHODS                    ********** //
 // ************************************************************************** //
 
@@ -92,32 +118,6 @@ void MainWindow::createConfigurationInterface(KConfigDialog *parent)
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
     this->takeoff->keyPressed(event);
-}
-
-
-// ************************************************************************** //
-// **********                    PRIVATE SLOTS                     ********** //
-// ************************************************************************** //
-
-void MainWindow::loadConfig()
-{
-    Config::loadConfig();
-    Menu::loadMenu();
-
-    this->takeoff->reset();
-
-    Config *cfg = Config::getInstance();
-
-    this->setPopupIcon(KIcon(cfg->getSettings(Config::ICON).toString()));
-
-    if (cfg->getSettings(Config::SHOW_FAVORITES).toBool())
-        this->loadFavorites();
-
-    if (cfg->getSettings(Config::SHOW_ALL_APPLICATIONS).toBool())
-        this->loadAllApplications();
-
-    if (cfg->getSettings(Config::SHOW_XDG_MENU).toBool())
-        this->loadXdgMenu();
 }
 
 
