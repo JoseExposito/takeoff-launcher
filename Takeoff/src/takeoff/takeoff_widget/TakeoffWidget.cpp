@@ -34,7 +34,7 @@ using namespace Plasma;
 // ************************************************************************** //
 
 TakeoffWidget::TakeoffWidget(QGraphicsWidget *parent)
-        : Plasma::Applet(parent),
+        : Plasma::Applet(parent, "plasma-applet-takeoff.desktop"),
           tabBar(NULL),
           menuWidget(NULL),
           searchWidget(NULL)

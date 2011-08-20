@@ -51,7 +51,7 @@ K_EXPORT_PLASMA_APPLET(takeoff, MainWindow)
 // ************************************************************************** //
 // **********              CONSTRUCTORS AND DESTRUCTOR             ********** //
 // ************************************************************************** //
-#include <QtGui/QGraphicsLinearLayout>
+
 MainWindow::MainWindow(QObject *parent, const QVariantList &args)
         : Plasma::PopupApplet(parent, args),
           takeoff(new TakeoffWidget(this))
@@ -60,7 +60,7 @@ MainWindow::MainWindow(QObject *parent, const QVariantList &args)
     this->setBackgroundHints(DefaultBackground);
     this->setAspectRatioMode(Plasma::IgnoreAspectRatio);
 
-    // Hide the popup when a launcher is clicked
+    // Hide the popup when an application is launched
     connect(this->takeoff, SIGNAL(clicked()), this, SLOT(hidePopup()));
 
     // Load the configuration

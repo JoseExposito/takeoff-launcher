@@ -76,6 +76,11 @@ public:
      */
     virtual void keyPressEvent(QKeyEvent *event);
 
+    /**
+     * Overloaded to hide the popup menu.
+     */
+    virtual void contextMenuEvent(QGraphicsSceneContextMenuEvent *) {}
+
     //--------------------------------------------------------------------------
 
     /**
