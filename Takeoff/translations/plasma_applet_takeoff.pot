@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://code.google.com/p/takeoff-launcher/issues/"
 "list\n"
-"POT-Creation-Date: 2011-08-17 18:58+0200\n"
+"POT-Creation-Date: 2011-08-20 13:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -84,15 +84,27 @@ msgstr ""
 msgid "Show Takeoff in full screen mode"
 msgstr ""
 
-#: src/takeoff/MainWindow.cpp:128
+#: src/takeoff/MainWindow.cpp:71
+msgid "Takeoff Launcher"
+msgstr ""
+
+#: src/takeoff/MainWindow.cpp:72
+msgid "Launch your applications with elegance"
+msgstr ""
+
+#: src/takeoff/MainWindow.cpp:146
 msgid "General settings"
 msgstr ""
 
-#: src/takeoff/MainWindow.cpp:141
+#: src/takeoff/MainWindow.cpp:154
+msgid "Edit applications..."
+msgstr ""
+
+#: src/takeoff/MainWindow.cpp:170
 msgid "Favorites"
 msgstr ""
 
-#: src/takeoff/MainWindow.cpp:156
+#: src/takeoff/MainWindow.cpp:185
 msgid "All Applications"
 msgstr ""
 

@@ -21,10 +21,14 @@
 #include "MainWindow.h"
 #include <QtCore/QList>
 #include <QtCore/QTranslator>
+#include <QtCore/QProcess>
 #include <QtGui/QApplication>
 #include <QtGui/QDesktopWidget>
+#include <QtGui/QAction>
 #include <KDE/KIcon>
 #include <KDE/KConfigDialog>
+#include <KDE/Plasma/ToolTipContent>
+#include <KDE/Plasma/ToolTipManager>
 #include "takeoff_widget/TakeoffWidget.h"
 #include "takeoff_widget/Launcher.h"
 #include "model/favorites/Favorites.h"
@@ -61,6 +65,13 @@ MainWindow::MainWindow(QObject *parent, const QVariantList &args)
 
     // Load the configuration
     this->loadConfig();
+
+    // Tooltip
+    Plasma::ToolTipContent data;
+    data.setMainText(i18n("Takeoff Launcher"));
+    data.setSubText(i18n("Launch your applications with elegance"));
+    data.setImage(this->popupIcon().pixmap(IconSize(KIconLoader::Desktop)));
+    Plasma::ToolTipManager::self()->setContent(this, data);
 }
 
 
@@ -108,6 +119,13 @@ void MainWindow::loadConfig()
         this->loadXdgMenu();
 }
 
+void MainWindow::launchMenuEditor() const
+{
+    QProcess* myProcess = new QProcess();
+    connect(myProcess, SIGNAL(finished(int)), this, SLOT(loadConfig()));
+    myProcess->start("kmenuedit --nofork");
+}
+
 
 // ************************************************************************** //
 // **********                    PUBLIC METHODS                    ********** //
@@ -129,6 +147,17 @@ void MainWindow::createConfigurationInterface(KConfigDialog *parent)
 
     connect(parent, SIGNAL(applyClicked()), this, SLOT(loadConfig()));
     connect(parent, SIGNAL(okClicked()), this, SLOT(loadConfig()));
+}
+
+QList<QAction*> MainWindow::contextualActions()
+{
+    QAction* launchMenuEditor = new QAction(i18n("Edit applications..."), this);
+    connect(launchMenuEditor, SIGNAL(triggered()),
+            this, SLOT(launchMenuEditor()));
+
+    QList<QAction*> ret;
+    ret.append(launchMenuEditor);
+    return ret;
 }
 
 

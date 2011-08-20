@@ -25,6 +25,7 @@
 class QDomNode;
 namespace Takeoff { class TakeoffWidget; }
 
+
 /**
  * Main window of the plasmoid and start point of the same. All components are
  * placed into this window.
@@ -59,10 +60,18 @@ public:
      */
     virtual void createConfigurationInterface(KConfigDialog *parent);
 
+    /**
+     * Inherit from Plasma::Applet. Adds actions to the right click menu.
+     */
+    virtual QList<QAction*> contextualActions();
+
 private slots:
 
     /// Loads the configuration using the private methods load*
     void loadConfig();
+
+    /// Launch the KDE menu editor.
+    void launchMenuEditor() const;
 
 private:
 
