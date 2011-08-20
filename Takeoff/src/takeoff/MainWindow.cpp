@@ -144,6 +144,7 @@ QGraphicsWidget *MainWindow::graphicsWidget()
 void MainWindow::createConfigurationInterface(KConfigDialog *parent)
 {
     parent->addPage(new ConfigForm, i18n("General settings"), "start-here-kde");
+    parent->enableButtonApply(true);
 
     connect(parent, SIGNAL(applyClicked()), this, SLOT(loadConfig()));
     connect(parent, SIGNAL(okClicked()), this, SLOT(loadConfig()));
