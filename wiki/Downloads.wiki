@@ -22,6 +22,9 @@ Bellow you can download packages for your favorite distro or download the source
  * *!OpenSuse:* Download and install this packages (thanks to Caig)
   - http://software.opensuse.org/search?q=plasmoid-takeoff&baseproject=ALL&lang=en&include_home=true&exclude_debug=true
 
+ * *Fedora 15:* Download and install this packages (thanks to Faster)
+  - https://build.opensuse.org/package/show?package=takeoff&project=home%3AFaster3ck%3Afasterindesign
+
  * *Arch Linux:* Available in AUR (thanks to Unikum)
   - http://aur.archlinux.org/packages.php?ID=51137
 
