@@ -108,6 +108,8 @@ void TakeoffWidget::keyPressEvent(QKeyEvent *event)
     } else {
         this->searchWidget->addSearchText(event);
     }
+
+    this->setFocus();
 }
 
 
