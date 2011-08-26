@@ -5,8 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: https://code.google.com/p/takeoff-launcher/issues/list\n"
-"POT-Creation-Date: 2011-08-20 13:32+0200\n"
+"Report-Msgid-Bugs-To: https://code.google.com/p/takeoff-launcher/issues/"
+"list\n"
+"POT-Creation-Date: 2011-08-26 20:28+0200\n"
 "PO-Revision-Date: 2011-08-20 16:17+0200\n"
 "Last-Translator: José Expósito\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -95,15 +96,15 @@ msgstr "Lanza tus aplicaciones con elegancia"
 msgid "General settings"
 msgstr "Preferencias generales"
 
-#: src/takeoff/MainWindow.cpp:154
+#: src/takeoff/MainWindow.cpp:155
 msgid "Edit applications..."
 msgstr "Editar las aplicaciones..."
 
-#: src/takeoff/MainWindow.cpp:170
+#: src/takeoff/MainWindow.cpp:171
 msgid "Favorites"
 msgstr "Favoritos"
 
-#: src/takeoff/MainWindow.cpp:185
+#: src/takeoff/MainWindow.cpp:186
 msgid "All Applications"
 msgstr "Todas las Aplicaciones"
 
