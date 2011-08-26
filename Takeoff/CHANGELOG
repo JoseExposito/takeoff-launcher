@@ -5,6 +5,7 @@
     - Added support for show Takeoff in full screen mode or float mode
     - Is possible edit the applications making right click in the panel icon
     - Added a tooltip to the panel icon
+    - Solved problems with the favorites text encoding
       
     - Added the following translations:
       Italian (Caig)
