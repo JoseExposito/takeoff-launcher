@@ -58,6 +58,8 @@ public:
     static const char *REMEMBER_LAST_TAB;
     static const char *SHOW_ICON_TEXT;
     static const char *FULL_SCREEN;
+    static const char *SHOW_BACKGROUND_IMAGE;
+    static const char *BACKGROUND_IMAGE;
 
     /**
      * Returns the specified property.

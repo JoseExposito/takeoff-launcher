@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>425</width>
-    <height>289</height>
+    <height>330</height>
    </rect>
   </property>
   <layout class="QGridLayout" name="gridLayout">
@@ -15,6 +15,31 @@
     <widget class="QLabel" name="label_5">
      <property name="text">
       <string>Icon</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" rowspan="3">
+    <widget class="QPushButton" name="iconBtn">
+     <property name="minimumSize">
+      <size>
+       <width>50</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>50</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>48</width>
+       <height>48</height>
+      </size>
      </property>
     </widget>
    </item>
@@ -46,7 +71,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
+   <item row="4" column="1" colspan="2">
     <widget class="QSlider" name="launcherSize">
      <property name="minimum">
       <number>30</number>
@@ -66,7 +91,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="1">
+   <item row="5" column="1" colspan="2">
     <widget class="QSlider" name="separationSize">
      <property name="maximum">
       <number>150</number>
@@ -83,7 +108,7 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="1">
+   <item row="6" column="1" colspan="2">
     <widget class="QSpinBox" name="numRows">
      <property name="minimum">
       <number>1</number>
@@ -100,45 +125,13 @@
      </property>
     </widget>
    </item>
-   <item row="7" column="1">
+   <item row="7" column="1" colspan="2">
     <widget class="QSpinBox" name="numColumns">
      <property name="minimum">
       <number>1</number>
      </property>
      <property name="maximum">
       <number>20</number>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="0">
-    <widget class="QCheckBox" name="rememberLastTab">
-     <property name="text">
-      <string>Remember last tab</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QPushButton" name="iconBtn">
-     <property name="minimumSize">
-      <size>
-       <width>50</width>
-       <height>50</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>50</width>
-       <height>50</height>
-      </size>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>48</width>
-       <height>48</height>
-      </size>
      </property>
     </widget>
    </item>
@@ -156,8 +149,69 @@
      </property>
     </widget>
    </item>
+   <item row="10" column="0">
+    <widget class="QCheckBox" name="rememberLastTab">
+     <property name="text">
+      <string>Remember last tab</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="0">
+    <widget class="QCheckBox" name="showBackgroundImage">
+     <property name="text">
+      <string>Show background image</string>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="1">
+    <widget class="QLineEdit" name="backgroundImageText">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="2">
+    <widget class="QPushButton" name="selectImageBtn">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>showBackgroundImage</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>backgroundImageText</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>95</x>
+     <y>288</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>313</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>showBackgroundImage</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>selectImageBtn</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>95</x>
+     <y>288</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>393</x>
+     <y>314</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

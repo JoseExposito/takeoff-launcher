@@ -62,6 +62,8 @@ const char *Config::ICON                  = "Takeoff/Icon";
 const char *Config::REMEMBER_LAST_TAB     = "Takeoff/RememberLastTab";
 const char *Config::SHOW_ICON_TEXT        = "Takeoff/ShowIconText";
 const char *Config::FULL_SCREEN           = "Takeoff/FullScreen";
+const char *Config::SHOW_BACKGROUND_IMAGE = "Takeoff/ShowBackgroundImage";
+const char *Config::BACKGROUND_IMAGE      = "Takeoff/BackgroundImage";
 
 
 // ************************************************************************** //
@@ -104,6 +106,8 @@ Config::Config()
     this->loadProperty(REMEMBER_LAST_TAB, false);
     this->loadProperty(SHOW_ICON_TEXT, true);
     this->loadProperty(FULL_SCREEN, true);
+    this->loadProperty(SHOW_BACKGROUND_IMAGE, false);
+    this->loadProperty(BACKGROUND_IMAGE, "");
 }
 
 

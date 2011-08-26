@@ -58,10 +58,15 @@ private slots:
 
     void on_rememberLastTab_clicked();
 
-
     void on_showIconText_clicked();
 
     void on_fullScreen_clicked();
+
+    void on_showBackgroundImage_clicked();
+
+    void on_backgroundImageText_editingFinished();
+
+    void on_selectImageBtn_clicked();
 
 private:
 

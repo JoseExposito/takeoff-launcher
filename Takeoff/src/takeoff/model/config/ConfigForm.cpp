@@ -21,6 +21,7 @@
 #include "ConfigForm.h"
 #include "Config.h"
 #include "ui_ConfigForm.h"
+#include <KDE/KFileDialog>
 #include <KDE/KIconDialog>
 
 // ************************************************************************** //
@@ -57,6 +58,15 @@ ConfigForm::ConfigForm(QWidget *parent)
             this->cfg->getSettings(Config::SHOW_ICON_TEXT).toBool());
     this->ui->fullScreen->setChecked(
             this->cfg->getSettings(Config::FULL_SCREEN).toBool());
+    this->ui->showBackgroundImage->setChecked(
+            this->cfg->getSettings(Config::SHOW_BACKGROUND_IMAGE).toBool());
+    this->ui->backgroundImageText->setText(
+            this->cfg->getSettings(Config::BACKGROUND_IMAGE).toString());
+    this->ui->backgroundImageText->setEnabled(
+            this->cfg->getSettings(Config::SHOW_BACKGROUND_IMAGE).toBool());
+    this->ui->selectImageBtn->setIcon(QIcon::fromTheme("document-open"));
+    this->ui->selectImageBtn->setEnabled(
+            this->cfg->getSettings(Config::SHOW_BACKGROUND_IMAGE).toBool());
 }
 
 ConfigForm::~ConfigForm()
@@ -134,4 +144,26 @@ void ConfigForm::on_fullScreen_clicked()
 {
     this->cfg->setSettings(Config::FULL_SCREEN,
             this->ui->fullScreen->isChecked());
+}
+
+void ConfigForm::on_showBackgroundImage_clicked()
+{
+    this->cfg->setSettings(Config::SHOW_BACKGROUND_IMAGE,
+            this->ui->showBackgroundImage->isChecked());
+}
+
+void ConfigForm::on_backgroundImageText_editingFinished()
+{
+    this->cfg->setSettings(Config::BACKGROUND_IMAGE,
+            this->ui->backgroundImageText->text());
+}
+
+void ConfigForm::on_selectImageBtn_clicked()
+{
+    QString fileName = KFileDialog::getOpenFileName();
+    if (!fileName.isEmpty()) {
+        this->ui->backgroundImageText->setText(fileName);
+        this->cfg->setSettings(Config::BACKGROUND_IMAGE,
+                this->ui->backgroundImageText->text());
+    }
 }

@@ -20,6 +20,7 @@
  */
 #include "TakeoffWidget.h"
 #include <QtGui/QGraphicsLinearLayout>
+#include <QtGui/QPainter>
 #include <KDE/Plasma/TabBar>
 #include "Launcher.h"
 #include "menu/MenuWidget.h"
@@ -110,6 +111,17 @@ void TakeoffWidget::keyPressEvent(QKeyEvent *event)
     }
 
     this->setFocus();
+}
+
+void TakeoffWidget::paint(QPainter *painter,
+            const QStyleOptionGraphicsItem */*option*/, QWidget */*widget*/)
+{
+    Config *cfg = Config::getInstance();
+    if (cfg->getSettings(Config::SHOW_BACKGROUND_IMAGE).toBool()) {
+        QPixmap img(cfg->getSettings(Config::BACKGROUND_IMAGE).toString());
+        QRect imgSize(0, 0, this->size().width(), this->size().height());
+        painter->drawImage(imgSize, img.toImage());
+    }
 }
 
 

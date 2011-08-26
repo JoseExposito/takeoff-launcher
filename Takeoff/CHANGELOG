@@ -6,6 +6,8 @@
     - Is possible edit the applications making right click in the panel icon
     - Added a tooltip to the panel icon
     - Solved problems with the favorites text encoding
+    - Added an option to add a background image (specially for user without
+      graphics acceleration)
       
     - Added the following translations:
       Italian (Caig)
