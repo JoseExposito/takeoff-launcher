@@ -100,10 +100,19 @@ void TakeoffWidget::reset()
 void TakeoffWidget::keyPressEvent(QKeyEvent *event)
 {
     // Show the search area
-    if (this->tabBar->currentIndex() != 1) {
+    if (this->tabBar->currentIndex() != 1
+            && event->key() != Qt::Key_Control
+            && event->key() != Qt::Key_Shift
+            && event->key() != Qt::Key_Alt
+            && event->key() != Qt::Key_AltGr
+            && event->key() != Qt::Key_Escape) {
         this->searchWidget->clearSearchText();
         this->searchWidget->addSearchText(event);
         this->tabBar->setCurrentIndex(1);
+
+    // Show the menu area
+    } else if (event->key() == Qt::Key_Escape) {
+        this->tabBar->setCurrentIndex(0);
 
     // Add text to the search box
     } else {

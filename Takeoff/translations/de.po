@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://code.google.com/p/takeoff-launcher/issues/"
 "list\n"
-"POT-Creation-Date: 2011-08-26 20:28+0200\n"
+"POT-Creation-Date: 2011-08-27 01:41+0200\n"
 "PO-Revision-Date: 2011-08-07 19:54+0200\n"
 "Last-Translator: Fabi <fabidesu@googlemail.com>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -20,68 +20,74 @@ msgstr ""
 
 #. i18n: file: src/takeoff/model/config/ConfigForm.ui:17
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: build/ui_ConfigForm.h:159 translations/rc.cpp:3 rc.cpp:3
+#: build/ui_ConfigForm.h:182 translations/rc.cpp:3 rc.cpp:3
 msgid "Icon"
 msgstr "Symbol"
 
-#. i18n: file: src/takeoff/model/config/ConfigForm.ui:24
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:49
 #. i18n: ectx: property (text), widget (QCheckBox, showFavorites)
-#: build/ui_ConfigForm.h:160 translations/rc.cpp:6 rc.cpp:6
+#: build/ui_ConfigForm.h:184 translations/rc.cpp:6 rc.cpp:6
 msgid "Show \"Favorites\" category"
 msgstr "Kategorie \"Favoriten\" zeigen"
 
-#. i18n: file: src/takeoff/model/config/ConfigForm.ui:31
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:56
 #. i18n: ectx: property (text), widget (QCheckBox, showAllApplications)
-#: build/ui_ConfigForm.h:161 translations/rc.cpp:9 rc.cpp:9
+#: build/ui_ConfigForm.h:185 translations/rc.cpp:9 rc.cpp:9
 msgid "Show \"All Applications\" category"
 msgstr "Kategorie  \"Alle Anwendungen\" zeigen"
 
-#. i18n: file: src/takeoff/model/config/ConfigForm.ui:38
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:63
 #. i18n: ectx: property (text), widget (QCheckBox, showXdgMenu)
-#: build/ui_ConfigForm.h:162 translations/rc.cpp:12 rc.cpp:12
+#: build/ui_ConfigForm.h:186 translations/rc.cpp:12 rc.cpp:12
 msgid "Show standard menu"
 msgstr "Standard Menü anzeigen"
 
-#. i18n: file: src/takeoff/model/config/ConfigForm.ui:45
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:70
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: build/ui_ConfigForm.h:163 translations/rc.cpp:15 rc.cpp:15
+#: build/ui_ConfigForm.h:187 translations/rc.cpp:15 rc.cpp:15
 msgid "Launcher size"
 msgstr "Symbolgröße"
 
-#. i18n: file: src/takeoff/model/config/ConfigForm.ui:65
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:90
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: build/ui_ConfigForm.h:164 translations/rc.cpp:18 rc.cpp:18
+#: build/ui_ConfigForm.h:188 translations/rc.cpp:18 rc.cpp:18
 msgid "Separation between launchers"
 msgstr "Abstand zwischen den Symbolen"
 
-#. i18n: file: src/takeoff/model/config/ConfigForm.ui:82
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:110
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: build/ui_ConfigForm.h:165 translations/rc.cpp:21 rc.cpp:21
+#: build/ui_ConfigForm.h:189 translations/rc.cpp:21 rc.cpp:21
 msgid "Number of rows"
 msgstr "Anzahl der Reihen"
 
-#. i18n: file: src/takeoff/model/config/ConfigForm.ui:99
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:127
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: build/ui_ConfigForm.h:166 translations/rc.cpp:24 rc.cpp:24
+#: build/ui_ConfigForm.h:190 translations/rc.cpp:24 rc.cpp:24
 msgid "Number of columns"
 msgstr "Anzahl der Zeilen"
 
-#. i18n: file: src/takeoff/model/config/ConfigForm.ui:116
-#. i18n: ectx: property (text), widget (QCheckBox, rememberLastTab)
-#: build/ui_ConfigForm.h:167 translations/rc.cpp:27 rc.cpp:27
-msgid "Remember last tab"
-msgstr "Tabposition beibehalten"
-
-#. i18n: file: src/takeoff/model/config/ConfigForm.ui:148
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:144
 #. i18n: ectx: property (text), widget (QCheckBox, showIconText)
-#: build/ui_ConfigForm.h:169 translations/rc.cpp:30 rc.cpp:30
+#: build/ui_ConfigForm.h:191 translations/rc.cpp:27 rc.cpp:27
 msgid "Show icon text"
 msgstr ""
 
-#. i18n: file: src/takeoff/model/config/ConfigForm.ui:155
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:151
 #. i18n: ectx: property (text), widget (QCheckBox, fullScreen)
-#: build/ui_ConfigForm.h:170 translations/rc.cpp:33 rc.cpp:33
+#: build/ui_ConfigForm.h:192 translations/rc.cpp:30 rc.cpp:30
 msgid "Show Takeoff in full screen mode"
+msgstr ""
+
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:158
+#. i18n: ectx: property (text), widget (QCheckBox, rememberLastTab)
+#: build/ui_ConfigForm.h:193 translations/rc.cpp:33 rc.cpp:33
+msgid "Remember last tab"
+msgstr "Tabposition beibehalten"
+
+#. i18n: file: src/takeoff/model/config/ConfigForm.ui:165
+#. i18n: ectx: property (text), widget (QCheckBox, showBackgroundImage)
+#: build/ui_ConfigForm.h:194 translations/rc.cpp:36 rc.cpp:36
+msgid "Show background image"
 msgstr ""
 
 #: src/takeoff/MainWindow.cpp:71
@@ -118,12 +124,12 @@ msgstr ""
 msgid "Add to favorites"
 msgstr "Favoriten"
 
-#: translations/rc.cpp:34 rc.cpp:34
+#: translations/rc.cpp:37 rc.cpp:37
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Fabian B."
 
-#: translations/rc.cpp:35 rc.cpp:35
+#: translations/rc.cpp:38 rc.cpp:38
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "fabidesu@gmail.com"

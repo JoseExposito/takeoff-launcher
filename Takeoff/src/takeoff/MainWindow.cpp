@@ -101,11 +101,11 @@ void MainWindow::loadConfig()
         int launcherSize = cfg->getSettings(Config::LAUNCHER_SIZE).toInt();
         int sep =cfg->getSettings(Config::SEPARATION_BETWEEN_LAUNCHERS).toInt();
 
-        this->takeoff->setMinimumWidth(numColumns*(launcherSize+sep) + 500);
-        this->takeoff->setMaximumWidth(numColumns*(launcherSize+sep) + 500);
+        this->takeoff->setMinimumWidth((numColumns+2)*(launcherSize+sep));
+        this->takeoff->setMaximumWidth((numColumns+2)*(launcherSize+sep));
 
-        this->takeoff->setMinimumHeight(numRows*(launcherSize+sep) + 300);
-        this->takeoff->setMaximumHeight(numRows*(launcherSize+sep) + 300);
+        this->takeoff->setMinimumHeight(numRows*(launcherSize+sep) + 200);
+        this->takeoff->setMaximumHeight(numRows*(launcherSize+sep) + 200);
     }
 
     // Load different categories

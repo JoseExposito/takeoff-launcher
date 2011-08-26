@@ -88,7 +88,7 @@ Config::Config()
     // Adjust columns and rows size
     if (numRows <= 2)     numRows = 2;
     if (numRows >= 10)    numRows = 10;
-    if (numColumns <= 2)  numColumns = 2;
+    if (numColumns <= 3)  numColumns = 3;
     if (numColumns >= 20) numColumns = 20;
 
     // Load the configuration into the QHash
