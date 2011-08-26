@@ -49,12 +49,14 @@ QList<Takeoff::Launcher*> Favorites::getFavorites()
 {
     QString favoritesFile = KStandardDirs::locate("config", "takeoffrc");
     QSettings settings(favoritesFile, QSettings::IniFormat);
+    settings.setIniCodec("UTF-8");
     QStringList desktopFiles =
             settings.value("Favorites/FavoriteURLs").toStringList();
 
     QList<Takeoff::Launcher*> ret;
     foreach (const QString &file, desktopFiles) {
         QSettings desktop(file, QSettings::IniFormat);
+        desktop.setIniCodec("UTF-8");
 
         // Name of the application (with internatilatization)
         QString completeLocale = QLocale::system().name(); // For example es_ES
