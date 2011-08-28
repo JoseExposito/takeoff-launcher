@@ -9,8 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://code.google.com/p/takeoff-launcher/issues/"
 "list\n"
 "POT-Creation-Date: 2011-08-27 04:11+0200\n"
-"PO-Revision-Date: 2011-08-07 00:28+0200\n"
-"Last-Translator: José Expósito\n"
+"PO-Revision-Date: 2011-08-28 23:54+0200\n"
+"Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
+"com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -71,13 +72,13 @@ msgstr "Número de columnas:"
 #. i18n: ectx: property (text), widget (QCheckBox, showIconText)
 #: build/ui_ConfigForm.h:191 translations/rc.cpp:27 rc.cpp:27
 msgid "Show icon text"
-msgstr ""
+msgstr "Amosar texto canda as iconas."
 
 #. i18n: file: src/takeoff/model/config/ConfigForm.ui:151
 #. i18n: ectx: property (text), widget (QCheckBox, fullScreen)
 #: build/ui_ConfigForm.h:192 translations/rc.cpp:30 rc.cpp:30
 msgid "Show Takeoff in full screen mode"
-msgstr ""
+msgstr "Despregar o lanzador a pantalla completa."
 
 #. i18n: file: src/takeoff/model/config/ConfigForm.ui:158
 #. i18n: ectx: property (text), widget (QCheckBox, rememberLastTab)
@@ -89,24 +90,23 @@ msgstr "Lembrar a última lapela."
 #. i18n: ectx: property (text), widget (QCheckBox, showBackgroundImage)
 #: build/ui_ConfigForm.h:194 translations/rc.cpp:36 rc.cpp:36
 msgid "Show background image"
-msgstr ""
+msgstr "Amosar unha imaxe de fondo."
 
 #: src/takeoff/MainWindow.cpp:71
 msgid "Takeoff Launcher"
-msgstr ""
+msgstr "Lanzador Takeoff"
 
 #: src/takeoff/MainWindow.cpp:72
 msgid "Launch your applications with elegance"
-msgstr ""
+msgstr "Inicie os seus aplicativos con elegancia."
 
 #: src/takeoff/MainWindow.cpp:149
 msgid "General settings"
 msgstr "Configuración xeral"
 
 #: src/takeoff/MainWindow.cpp:158
-#, fuzzy
 msgid "Edit applications..."
-msgstr "Todos os aplicativos"
+msgstr "Modificar os aplicativos"
 
 #: src/takeoff/MainWindow.cpp:174
 msgid "Favorites"
@@ -118,12 +118,11 @@ msgstr "Todos os aplicativos"
 
 #: src/takeoff/takeoff_widget/Launcher.cpp:126
 msgid "Remove from favorites"
-msgstr ""
+msgstr "Quitar dos favoritos"
 
 #: src/takeoff/takeoff_widget/Launcher.cpp:129
-#, fuzzy
 msgid "Add to favorites"
-msgstr "Favoritos"
+msgstr "Engadir aos favoritos"
 
 #: translations/rc.cpp:37 rc.cpp:37
 msgctxt "NAME OF TRANSLATORS"
@@ -134,3 +133,4 @@ msgstr "Adrián Chaves Fernández (Gallaecio)"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "adriyetichaves@gmail.com"
+
