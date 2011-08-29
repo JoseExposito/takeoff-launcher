@@ -29,10 +29,10 @@ Bellow you can download packages for your favorite distro or download the source
   - http://aur.archlinux.org/packages.php?ID=51137
 
  * For other distros you can download and compile the *source code*: <br/>
-  * *[https://takeoff-launcher.googlecode.com/files/takeoff-1.0.tar.gz   Takeoff v1.0]*
-  * *[http://takeoff-launcher.googlecode.com/files/takeoff-0.2.tar.gz    Takeoff v0.2]*
-  * *[https://takeoff-launcher.googlecode.com/files/takeoff-0.1.5.tar.gz Takeoff v0.1.5]*
-  * *[http://takeoff-launcher.googlecode.com/files/takeoff-0.1.tar.gz    Takeoff v0.1]*
+  * [https://takeoff-launcher.googlecode.com/files/takeoff-1.0.tar.gz   Takeoff v1.0]
+  * [http://takeoff-launcher.googlecode.com/files/takeoff-0.2.tar.gz    Takeoff v0.2]
+  * [https://takeoff-launcher.googlecode.com/files/takeoff-0.1.5.tar.gz Takeoff v0.1.5]
+  * [http://takeoff-launcher.googlecode.com/files/takeoff-0.1.tar.gz    Takeoff v0.1]
 
 <br/>
 <hr>
