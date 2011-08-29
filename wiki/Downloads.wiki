@@ -28,11 +28,11 @@ Bellow you can download packages for your favorite distro or download the source
  * *Arch Linux:* Available in AUR (thanks to Unikum)
   - http://aur.archlinux.org/packages.php?ID=51137
 
- * For other distros you can download and compile the *source code*: <br/>
-  - [https://takeoff-launcher.googlecode.com/files/takeoff-1.0.tar.gz   Takeoff v1.0]
-  - [http://takeoff-launcher.googlecode.com/files/takeoff-0.2.tar.gz    Takeoff v0.2]
-  - [https://takeoff-launcher.googlecode.com/files/takeoff-0.1.5.tar.gz Takeoff v0.1.5]
-   - [http://takeoff-launcher.googlecode.com/files/takeoff-0.1.tar.gz    Takeoff v0.1]
+ * For other distros you can download and compile the *source code*:
+  - [https://takeoff-launcher.googlecode.com/files/takeoff-1.0.tar.gz   Takeoff v1.0]<br/>
+  - [http://takeoff-launcher.googlecode.com/files/takeoff-0.2.tar.gz    Takeoff v0.2]<br/>
+  - [https://takeoff-launcher.googlecode.com/files/takeoff-0.1.5.tar.gz Takeoff v0.1.5]<br/>
+  - [http://takeoff-launcher.googlecode.com/files/takeoff-0.1.tar.gz    Takeoff v0.1]
 
 <br/>
 <hr>
