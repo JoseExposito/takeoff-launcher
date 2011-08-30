@@ -110,6 +110,11 @@ void TakeoffWidget::keyPressEvent(QKeyEvent *event)
         this->searchWidget->addSearchText(event);
         this->tabBar->setCurrentIndex(1);
 
+    // Hide popup
+    } else if (this->tabBar->currentIndex() != 1
+            && event->key() == Qt::Key_Escape) {
+        emit this->clicked();
+
     // Show the menu area
     } else if (event->key() == Qt::Key_Escape) {
         this->tabBar->setCurrentIndex(0);

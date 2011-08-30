@@ -19,8 +19,8 @@
  * @class  Menu
  */
 #include "Menu.h"
+#include <KDE/KServiceGroup>
 #include <KDE/KIcon>
-#include "qtxdg/xdgmenu.h"
 
 // ************************************************************************** //
 // **********             STATIC METHODS AND VARIABLES             ********** //
@@ -56,30 +56,32 @@ Menu::Menu()
           categories(new QList< QPair<QString, KIcon>* >),
           categoriesApplications(new QList< QList<Takeoff::Launcher>* >)
 {
-    QString menuFile = XdgMenu::getMenuFileName();
-    XdgMenu xdgMenu;
-    xdgMenu.environments() << "KDE";
+    KServiceGroup::Ptr root = KServiceGroup::group(QString());
 
-    bool res = xdgMenu.read(menuFile);
-    if (!res)
+    if (!root || !root->isValid())
         qFatal("Error loading xdg-menu");
 
-    QDomNode rootNode = xdgMenu.xml().firstChild();
-    QDomNode categorieNode = rootNode.firstChild();
+    const KServiceGroup::List list = root->entries(
+            true,   // Sorted
+            true,   // Exclude no display entries
+            false,  // Don't allow separators
+            true ); // Sort by generic name
 
-    for (categorieNode.firstChild(); !categorieNode.isNull();
-            categorieNode=categorieNode.nextSibling()) {
-        QDomElement categorieElem = categorieNode.toElement();
-        if (categorieElem.isNull())
-            continue;
+    for (KServiceGroup::List::ConstIterator it=list.constBegin();
+            it != list.constEnd(); it++) {
+        const KSycocaEntry::Ptr p = (*it);
 
         // Category
-        if (categorieElem.tagName() == "Menu"
-                && !categorieElem.attribute("title").startsWith(".")) {
+        if (p->isType(KST_KServiceGroup)) {
+            const KServiceGroup::Ptr group = KServiceGroup::Ptr::staticCast(p);
+
+            if (group->noDisplay() || group->childCount() == 0)
+                continue;
+
             // Save the category
             QPair<QString, KIcon> *category = new QPair<QString, KIcon>;
-            category->first  = categorieElem.attribute("title");
-            category->second = KIcon(categorieElem.attribute("icon"));
+            category->first  = group->caption();
+            category->second = KIcon(group->icon());
             this->categories->append(category);
 
             // Add the category to the categoriesApplications list
@@ -87,8 +89,22 @@ Menu::Menu()
             this->categoriesApplications->append(l);
 
             // Save the category applications
-            this->saveApplications(categorieNode.firstChild(),
+            this->saveApplications(group->relPath(),
                     this->categories->length()-1);
+
+        // Launcher
+        } else if (p->isType(KST_KService)) {
+
+            // TODO Aquí hay que ver si hay aplicaciones sueltas y añadirlas a
+            //      una categoría "Otras aplicaciones"
+
+            /*
+            const KService::Ptr service = KService::Ptr::staticCast(p);
+            if (service->noDisplay())
+                continue;
+            qDebug() << service->name() << service->genericName()
+                    << service->entryPath() << service->icon();
+            */
         }
     }
 }
@@ -106,26 +122,47 @@ Menu::~Menu()
 // **********                   PRIVATE METHODS                    ********** //
 // ************************************************************************** //
 
-void Menu::saveApplications(QDomNode node, int categoryIndex)
+void Menu::saveApplications(const QString &path, int categoryIndex)
 {
-    for (node.firstChild(); !node.isNull(); node=node.nextSibling()) {
-        QDomElement elem = node.toElement();
-        if(elem.isNull())
-            continue;
+    KServiceGroup::Ptr root = KServiceGroup::group(path);
+
+    if (!root || !root->isValid())
+        qFatal("Error loading xdg-menu");
+
+    const KServiceGroup::List list = root->entries(
+            true,   // Sorted
+            true,   // Exclude no display entries
+            false,  // Don't allow separators
+            true ); // Sort by generic name
+
+    for (KServiceGroup::List::ConstIterator it=list.constBegin();
+            it != list.constEnd(); it++) {
+        const KSycocaEntry::Ptr p = (*it);
+
+        // Category
+        if (p->isType(KST_KServiceGroup)) {
+            const KServiceGroup::Ptr group = KServiceGroup::Ptr::staticCast(p);
+
+            if (group->noDisplay() || group->childCount() == 0)
+                continue;
+
+            this->saveApplications(group->relPath(), categoryIndex);
 
         // Launcher
-        if(elem.tagName() == "AppLink") {
+        } else if (p->isType(KST_KService)) {
+            const KService::Ptr service = KService::Ptr::staticCast(p);
+
+            if (service->noDisplay())
+                continue;
+
             Takeoff::Launcher launcher(
-                    KIcon(elem.attribute("icon")),
-                    elem.attribute("title"),
-                    elem.attribute("desktopFile"));
+                    KIcon(service->icon()),
+                    service->name(),
+                    service->entryPath());
+            // service->genericName()
 
             this->allApplications->append(launcher);
             this->categoriesApplications->at(categoryIndex)->append(launcher);
-
-        // Submenu
-        } else {
-            this->saveApplications(node.firstChild(), categoryIndex);
         }
     }
 }

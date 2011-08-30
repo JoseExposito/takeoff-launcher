@@ -24,7 +24,6 @@
 #include <QtCore/QList>
 #include <QtCore/QPair>
 #include "../../takeoff_widget/Launcher.h"
-class QDomNode;
 class KIcon;
 
 /**
@@ -80,10 +79,10 @@ private:
     /**
      * Auxiliary function to save the launchers in the allApplications and
      * categoriesApplications lists.
-     * @param node The node of the category
+     * @param path          The path of the category to save.
      * @param categoryIndex The index of the category where save the launcher.
      */
-    void saveApplications(QDomNode node, int categoryIndex);
+    void saveApplications(const QString &path, int categoryIndex);
 
     //--------------------------------------------------------------------------
 
