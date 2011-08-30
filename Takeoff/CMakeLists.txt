@@ -25,7 +25,6 @@ add_subdirectory(src/takeoff)
 add_subdirectory(src/takeoff/model/config)
 add_subdirectory(src/takeoff/model/favorites)
 add_subdirectory(src/takeoff/model/menu)
-add_subdirectory(src/takeoff/model/menu/qtxdg)
 add_subdirectory(src/takeoff/takeoff_widget)
 add_subdirectory(src/takeoff/takeoff_widget/util)
 add_subdirectory(src/takeoff/takeoff_widget/menu)
@@ -40,7 +39,6 @@ target_link_libraries(plasma_applet_takeoff
         ${KDE4_PLASMA_LIBS}
         ${KDE4_KDEUI_LIBS}
         ${KDE4_KIO_LIBRARY}
-        ${QT_QTXML_LIBRARY}
 )
 
 install(TARGETS plasma_applet_takeoff
