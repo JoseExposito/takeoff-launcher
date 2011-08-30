@@ -1,3 +1,6 @@
+[+] Current code (//)
+    - Switched form QtXDG to KServiceGroup
+    
 [+] Takeoff v1.0 (2011/08/30)
     - Added support for show Takeoff in full screen mode or float mode
     - Added support for add and remove favorites
@@ -16,7 +19,7 @@
       Russian (Alexander Sorokin)
       Greek (Neophytos Kolokotronis)
 
-[+] Takeoff v0.2: (2011/08/12)
+[+] Takeoff v0.2 (2011/08/12)
     - Added support for searches
     - Added support for translations (credits to Manu Tortosa)
     - Solved problems with some launchers (with %U, %c...) and added support for

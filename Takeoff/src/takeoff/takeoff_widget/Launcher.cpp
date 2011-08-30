@@ -36,9 +36,10 @@ using namespace Takeoff;
 // ************************************************************************** //
 
 Launcher::Launcher(const QIcon &icon, const QString &name,
-        const QString &desktopFile)
+        const QString &description, const QString &desktopFile)
         : icon(icon),
           name(name),
+          description(description),
           desktopFile(desktopFile)
 {
     this->init();
@@ -48,9 +49,29 @@ Launcher::Launcher(const Launcher &launcher)
         : QGraphicsWidget(),
           icon(launcher.icon),
           name(launcher.name),
+          description(launcher.description),
           desktopFile(launcher.desktopFile)
 {
     this->init();
+}
+
+
+// ************************************************************************** //
+// **********                  OVERLOAD OPERATORS                  ********** //
+// ************************************************************************** //
+
+Launcher &Launcher::operator = (const Launcher& launcher)
+{
+    this->icon        = launcher.icon;
+    this->name        = launcher.name;
+    this->description = launcher.description;
+    this->desktopFile = launcher.description;
+    return *this;
+}
+
+bool Launcher::operator == (const Launcher& launcher)
+{
+    return this->desktopFile == launcher.desktopFile;
 }
 
 
@@ -73,6 +94,7 @@ void Launcher::init()
     // Set the tooltip
     Plasma::ToolTipContent data;
     data.setMainText(this->name);
+    data.setSubText(this->description);
     data.setImage(this->icon.pixmap(32, 32));
     Plasma::ToolTipManager::self()->setContent(icon, data);
 
@@ -100,14 +122,14 @@ void Launcher::runApplication() const
 void Launcher::addToFavorites() const
 {
     Favorites *favorites = Favorites::getInstance();
-    favorites->addToFavorites(this);
+    favorites->addToFavorites(*this);
     emit this->addedToFavorites();
 }
 
 void Launcher::removeFromFavorites() const
 {
     Favorites *favorites = Favorites::getInstance();
-    favorites->removeFromFavorites(this);
+    favorites->removeFromFavorites(*this);
     emit this->removedFromFavorites();
 }
 
@@ -122,14 +144,13 @@ void Launcher::mousePressEvent(QGraphicsSceneMouseEvent *event)
         QMenu menu;
 
         Favorites *favorites = Favorites::getInstance();
-        if (favorites->isfavorite(this)) {
+        if (favorites->isfavorite(*this)) {
             menu.addAction(KIcon("list-remove"), i18n("Remove from favorites"),
                     this, SLOT(removeFromFavorites()));
         } else {
             menu.addAction(KIcon("favorites"), i18n("Add to favorites"),
                     this, SLOT(addToFavorites()));
         }
-
 
         menu.exec(QCursor::pos());
     }
@@ -140,9 +161,19 @@ void Launcher::mousePressEvent(QGraphicsSceneMouseEvent *event)
 // **********                      GET/SET/IS                      ********** //
 // ************************************************************************** //
 
+QIcon Launcher::getIcon() const
+{
+    return this->icon;
+}
+
 QString Launcher::getName() const
 {
     return this->name;
+}
+
+QString Launcher::getDescription() const
+{
+    return this->description;
 }
 
 QString Launcher::getDesktopFile() const

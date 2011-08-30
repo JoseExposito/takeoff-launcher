@@ -84,10 +84,11 @@ void MenuWidget::reloadFavorites()
         panelArea->removeAllLaunchers();
 
         Favorites *favorites = Favorites::getInstance();
-        QList<Takeoff::Launcher*> favoritesList = favorites->getFavorites();
+        QList<Takeoff::Launcher> *favoritesList = favorites->getFavorites();
 
-        foreach (Takeoff::Launcher *launcher, favoritesList) {
-            this->addMenuLauncher(0, launcher);
+        for (int n=0; n<favoritesList->length(); n++) {
+            Takeoff::Launcher launcher = favoritesList->at(n);
+            this->addMenuLauncher(0, new Takeoff::Launcher(launcher));
         }
     }
 }

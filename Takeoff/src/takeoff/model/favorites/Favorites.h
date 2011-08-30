@@ -38,40 +38,55 @@ public:
      */
     static Favorites *getInstance();
 
+    /**
+     * Destructor.
+     */
+    virtual ~Favorites();
+
     //--------------------------------------------------------------------------
 
     /**
      * Returns the list of the favorite applications
      * @return The list.
      */
-    QList<Takeoff::Launcher*> getFavorites();
+    QList<Takeoff::Launcher> *getFavorites();
 
     /**
      * Adds the specified launcher to favorites.
      * @param launcher The launcher to add.
      */
-    void addToFavorites(const Takeoff::Launcher *launcher);
+    void addToFavorites(const Takeoff::Launcher launcher);
 
     /**
      * Removes the specified launcher from favorites.
      * @param launcher The launcher to remove.
      */
-    void removeFromFavorites(const Takeoff::Launcher *launcher);
+    void removeFromFavorites(const Takeoff::Launcher launcher);
 
     /**
      * Indicates if the specified launcher is a favorite.
      * @param  launcher The launcher to check.
      * @return True if is a favorite, false if not.
      */
-    bool isfavorite(const Takeoff::Launcher *launcher);
+    bool isfavorite(const Takeoff::Launcher launcher);
 
 private:
 
+    /**
+     * Saves in disk the favorites list.
+     */
+    void saveFavorites() const;
+
+    /// List with the favorites
+    QList<Takeoff::Launcher> *favoritesList;
+
+    //--------------------------------------------------------------------------
+
     /// Single instance of the class.
-    static Favorites* instance;
+    static Favorites *instance;
 
     // Hide constructors
-    Favorites(){}
+    Favorites();
     Favorites(const Favorites&);
     const Favorites &operator = (const Favorites&);
 

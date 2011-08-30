@@ -97,7 +97,7 @@ Menu::Menu()
 
             // TODO Aquí hay que ver si hay aplicaciones sueltas y añadirlas a
             //      una categoría "Otras aplicaciones"
-
+// TODO Hacer que cuando se instalen aplicaciones se actualice el menú ya de paso
             /*
             const KService::Ptr service = KService::Ptr::staticCast(p);
             if (service->noDisplay())
@@ -158,8 +158,8 @@ void Menu::saveApplications(const QString &path, int categoryIndex)
             Takeoff::Launcher launcher(
                     KIcon(service->icon()),
                     service->name(),
+                    service->genericName(),
                     service->entryPath());
-            // service->genericName()
 
             this->allApplications->append(launcher);
             this->categoriesApplications->at(categoryIndex)->append(launcher);

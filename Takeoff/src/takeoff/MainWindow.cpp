@@ -171,11 +171,12 @@ void MainWindow::loadFavorites()
     this->takeoff->addMenuCategory(KIcon("favorites"), i18n("Favorites"));
 
     Favorites *favorites = Favorites::getInstance();
-    QList<Launcher*> favoritesList = favorites->getFavorites();
+    QList<Launcher> *favoritesList = favorites->getFavorites();
 
-    foreach (Launcher *launcher, favoritesList) {
+    for (int n=0; n<favoritesList->length(); n++) {
+        Launcher launcher = favoritesList->at(n);
         this->takeoff->addMenuLauncher(this->takeoff->getNumMenuCategories()-1,
-                launcher);
+                new Launcher(launcher));
     }
 }
 

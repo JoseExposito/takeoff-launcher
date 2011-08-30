@@ -25,6 +25,7 @@
 #include <QtCore/QLocale>
 #include <KDE/KIcon>
 #include <KDE/KStandardDirs>
+#include "../menu/Menu.h"
 
 // ************************************************************************** //
 // **********             STATIC METHODS AND VARIABLES             ********** //
@@ -42,68 +43,82 @@ Favorites *Favorites::getInstance()
 
 
 // ************************************************************************** //
-// **********                    PUBLIC METHODS                    ********** //
+// **********              CONSTRUCTORS AND DESTRUCTOR             ********** //
 // ************************************************************************** //
 
-QList<Takeoff::Launcher*> Favorites::getFavorites()
+Favorites::Favorites()
+        : favoritesList(new QList<Takeoff::Launcher>)
 {
+    // Get the favorites URLs
     QString favoritesFile = KStandardDirs::locate("config", "takeoffrc");
     QSettings settings(favoritesFile, QSettings::IniFormat);
     settings.setIniCodec("UTF-8");
     QStringList desktopFiles =
             settings.value("Favorites/FavoriteURLs").toStringList();
 
-    QList<Takeoff::Launcher*> ret;
-    foreach (const QString &file, desktopFiles) {
-        QSettings desktop(file, QSettings::IniFormat);
-        desktop.setIniCodec("UTF-8");
+    // Get the list of all application
+    Menu *menu = Menu::getInstance();
+    QList<Takeoff::Launcher> *allApps = menu->getAllApplications();
 
-        // Name of the application (with internatilatization)
-        QString completeLocale = QLocale::system().name(); // For example es_ES
-        QString simpleLocale   = completeLocale.split("_").at(0); // and es
-
-        QString appName = desktop.value(
-                "Desktop Entry/Name[" + completeLocale + "]", "").toString();
-        if (appName.isEmpty())
-            appName = desktop.value(
-                    "Desktop Entry/Name[" + simpleLocale + "]", "").toString();
-        if (appName.isEmpty())
-            appName = desktop.value("Desktop Entry/Name").toString();
-
-        // Create the launcher and it to the list
-        Takeoff::Launcher *launcher = new Takeoff::Launcher(KIcon(
-                desktop.value("Desktop Entry/Icon").toString()), appName, file);
-        ret.append(launcher);
+    // Search in the applications list the favorites
+    foreach (const QString &desktopFile, desktopFiles) {
+        foreach (Takeoff::Launcher launcher, *allApps) {
+            if (launcher.getDesktopFile() == desktopFile) {
+                this->favoritesList->append(launcher);
+                break;
+            }
+        }
     }
 
-    return ret;
 }
 
-void Favorites::addToFavorites(const Takeoff::Launcher *launcher)
+Favorites::~Favorites()
+{
+    delete this->favoritesList;
+}
+
+
+// ************************************************************************** //
+// **********                    PUBLIC METHODS                    ********** //
+// ************************************************************************** //
+
+QList<Takeoff::Launcher> *Favorites::getFavorites()
+{
+    return this->favoritesList;
+}
+
+void Favorites::addToFavorites(const Takeoff::Launcher launcher)
+{
+    this->favoritesList->append(launcher);
+    this->saveFavorites();
+}
+
+void Favorites::removeFromFavorites(const Takeoff::Launcher launcher)
+{
+    this->favoritesList->removeAll(launcher);
+    this->saveFavorites();
+}
+
+bool Favorites::isfavorite(const Takeoff::Launcher launcher)
+{
+    return this->favoritesList->contains(launcher);
+}
+
+
+// ************************************************************************** //
+// **********                   PRIVATE METHODS                    ********** //
+// ************************************************************************** //
+
+void Favorites::saveFavorites() const
 {
     QString favoritesFile = KStandardDirs::locate("config", "takeoffrc");
     QSettings settings(favoritesFile, QSettings::IniFormat);
-    QStringList desktopFiles =
-            settings.value("Favorites/FavoriteURLs").toStringList();
-    desktopFiles.append(launcher->getDesktopFile());
-    settings.setValue("Favorites/FavoriteURLs", desktopFiles);
-}
 
-void Favorites::removeFromFavorites(const Takeoff::Launcher *launcher)
-{
-    QString favoritesFile = KStandardDirs::locate("config", "takeoffrc");
-    QSettings settings(favoritesFile, QSettings::IniFormat);
-    QStringList desktopFiles =
-            settings.value("Favorites/FavoriteURLs").toStringList();
-    desktopFiles.removeAll(launcher->getDesktopFile());
-    settings.setValue("Favorites/FavoriteURLs", desktopFiles);
-}
+    QStringList aux;
+    for (int n=0; n<this->favoritesList->length(); n++) {
+        Takeoff::Launcher l = this->favoritesList->at(n);
+        aux.append(l.getDesktopFile());
+    }
 
-bool Favorites::isfavorite(const Takeoff::Launcher *launcher)
-{
-    QString favoritesFile = KStandardDirs::locate("config", "takeoffrc");
-    QSettings settings(favoritesFile, QSettings::IniFormat);
-    QStringList desktopFiles =
-            settings.value("Favorites/FavoriteURLs").toStringList();
-    return desktopFiles.contains(launcher->getDesktopFile());
+    settings.setValue("Favorites/FavoriteURLs", aux);
 }

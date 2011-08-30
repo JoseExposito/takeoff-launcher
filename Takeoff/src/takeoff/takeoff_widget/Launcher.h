@@ -40,10 +40,11 @@ public:
      * @param icon The icon of the launcher. If a null-icon is passed Takeoff
      *        will put a default icon.
      * @param name Name to show under the icon.
+     * @param description Description of the launcher to show in the tooltip.
      * @param desktopFile Desktop file to execute when the user click on the
      *        launcher.
      */
-    Launcher(const QIcon &icon, const QString &name,
+    Launcher(const QIcon &icon, const QString &name, const QString &description,
             const QString &desktopFile);
 
     /**
@@ -51,6 +52,20 @@ public:
      * @param launcher The launcher to copy.
      */
     Launcher(const Launcher &launcher);
+
+    //--------------------------------------------------------------------------
+
+    /**
+     * Assignment overload operator.
+     * @param launcher The launcher to copy.
+     */
+    Launcher &operator = (const Launcher& launcher);
+
+    /**
+     * Indicates if two launchers are equals or not.
+     * @return If are equals.
+     */
+    bool operator == (const Launcher& launcher);
 
     //--------------------------------------------------------------------------
 
@@ -63,10 +78,22 @@ public:
     //--------------------------------------------------------------------------
 
     /**
+     * Returns the icon of the launcher.
+     * @return The icon.
+     */
+    QIcon getIcon() const;
+
+    /**
      * Returns the name of the launcher.
      * @return The name showed under the icon.
      */
     QString getName() const;
+
+    /**
+     * Returns the description of the launcher.
+     * @return The description showed in the tooltip.
+     */
+    QString getDescription() const;
 
     /**
      * Returns the desktop file associated with the launcher.
@@ -122,6 +149,9 @@ private:
 
     /// The text to show under the icon.
     QString name;
+
+    /// Description to show in the tooltip.
+    QString description;
 
     /// The desktop file to execute when the user click on the launcher.
     QString desktopFile;
