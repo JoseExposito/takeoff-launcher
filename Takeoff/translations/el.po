@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://code.google.com/p/takeoff-launcher/issues/"
 "list\n"
-"POT-Creation-Date: 2011-08-27 01:41+0200\n"
+"POT-Creation-Date: 2011-09-01 11:10+0200\n"
 "PO-Revision-Date: 2011-08-27 16:08+0300\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -90,35 +90,40 @@ msgstr "Απομνημόνευση τελευταίας καρτέλας"
 msgid "Show background image"
 msgstr "Εμφάνιση εικόνας φόντου"
 
-#: src/takeoff/MainWindow.cpp:71
+#: src/takeoff/MainWindow.cpp:77
 msgid "Takeoff Launcher"
 msgstr "Εκκινητής Takeoff"
 
-#: src/takeoff/MainWindow.cpp:72
+#: src/takeoff/MainWindow.cpp:78
 msgid "Launch your applications with elegance"
 msgstr "Εκκινήστε τις εφαρμογές σας με κομψότητα"
 
-#: src/takeoff/MainWindow.cpp:146
+#: src/takeoff/MainWindow.cpp:149
 msgid "General settings"
 msgstr "Γενικές Ρυθμίσεις"
 
-#: src/takeoff/MainWindow.cpp:155
+#: src/takeoff/MainWindow.cpp:158
 msgid "Edit applications..."
 msgstr "Ρύθμιση εφαρμογών..."
 
-#: src/takeoff/MainWindow.cpp:171
+#: src/takeoff/MainWindow.cpp:174
 msgid "Favorites"
 msgstr "Αγαπημένα"
 
-#: src/takeoff/MainWindow.cpp:186
+#: src/takeoff/MainWindow.cpp:190
 msgid "All Applications"
 msgstr "Όλες οι Εφαρμογές"
 
-#: src/takeoff/takeoff_widget/Launcher.cpp:126
+#: src/takeoff/model/menu/Menu.cpp:133
+#, fuzzy
+msgid "Other Applications"
+msgstr "Όλες οι Εφαρμογές"
+
+#: src/takeoff/takeoff_widget/Launcher.cpp:146
 msgid "Remove from favorites"
 msgstr "Αφαίρεση από αγαπημένα"
 
-#: src/takeoff/takeoff_widget/Launcher.cpp:129
+#: src/takeoff/takeoff_widget/Launcher.cpp:149
 msgid "Add to favorites"
 msgstr "Προσθήκη σε αγαπημένα"
 
@@ -131,5 +136,3 @@ msgstr "Neophytos Kolokotronis"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "tetris4@gmail.com"
-
-

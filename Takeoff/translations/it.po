@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://code.google.com/p/takeoff-launcher/issues/"
 "list\n"
-"POT-Creation-Date: 2011-08-27 01:41+0200\n"
+"POT-Creation-Date: 2011-09-01 11:10+0200\n"
 "PO-Revision-Date: 2011-08-27 10:10+0200\n"
 "Last-Translator: Caig <giacomosrv@gmail.com>\n"
 "Language-Team: Italian <>\n"
@@ -90,35 +90,40 @@ msgstr "Ricorda l'ultima scheda"
 msgid "Show background image"
 msgstr "Mostra immagine di sfondo"
 
-#: src/takeoff/MainWindow.cpp:71
+#: src/takeoff/MainWindow.cpp:77
 msgid "Takeoff Launcher"
 msgstr "Lancia applicazioni Takeoff"
 
-#: src/takeoff/MainWindow.cpp:72
+#: src/takeoff/MainWindow.cpp:78
 msgid "Launch your applications with elegance"
 msgstr "Avvia le tue applicazioni con eleganza"
 
-#: src/takeoff/MainWindow.cpp:146
+#: src/takeoff/MainWindow.cpp:149
 msgid "General settings"
 msgstr "Impostazioni generali"
 
-#: src/takeoff/MainWindow.cpp:155
+#: src/takeoff/MainWindow.cpp:158
 msgid "Edit applications..."
 msgstr "Modifica applicazioni..."
 
-#: src/takeoff/MainWindow.cpp:171
+#: src/takeoff/MainWindow.cpp:174
 msgid "Favorites"
 msgstr "Preferiti"
 
-#: src/takeoff/MainWindow.cpp:186
+#: src/takeoff/MainWindow.cpp:190
 msgid "All Applications"
 msgstr "Tutte le applicazioni"
 
-#: src/takeoff/takeoff_widget/Launcher.cpp:126
+#: src/takeoff/model/menu/Menu.cpp:133
+#, fuzzy
+msgid "Other Applications"
+msgstr "Tutte le applicazioni"
+
+#: src/takeoff/takeoff_widget/Launcher.cpp:146
 msgid "Remove from favorites"
 msgstr "Rimuovi dai preferiti"
 
-#: src/takeoff/takeoff_widget/Launcher.cpp:129
+#: src/takeoff/takeoff_widget/Launcher.cpp:149
 msgid "Add to favorites"
 msgstr "Aggiungi ai preferiti"
 

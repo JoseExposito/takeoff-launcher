@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://code.google.com/p/takeoff-launcher/issues/"
 "list\n"
-"POT-Creation-Date: 2011-08-27 04:11+0200\n"
+"POT-Creation-Date: 2011-09-01 11:10+0200\n"
 "Language-Team: Russian <aes78@mail.ru>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -92,11 +92,11 @@ msgstr "Помнить последнюю вкладку"
 msgid "Show background image"
 msgstr ""
 
-#: src/takeoff/MainWindow.cpp:71
+#: src/takeoff/MainWindow.cpp:77
 msgid "Takeoff Launcher"
 msgstr ""
 
-#: src/takeoff/MainWindow.cpp:72
+#: src/takeoff/MainWindow.cpp:78
 msgid "Launch your applications with elegance"
 msgstr ""
 
@@ -113,15 +113,20 @@ msgstr "Все приложения"
 msgid "Favorites"
 msgstr "Избранное"
 
-#: src/takeoff/MainWindow.cpp:189
+#: src/takeoff/MainWindow.cpp:190
 msgid "All Applications"
 msgstr "Все приложения"
 
-#: src/takeoff/takeoff_widget/Launcher.cpp:126
+#: src/takeoff/model/menu/Menu.cpp:133
+#, fuzzy
+msgid "Other Applications"
+msgstr "Все приложения"
+
+#: src/takeoff/takeoff_widget/Launcher.cpp:146
 msgid "Remove from favorites"
 msgstr ""
 
-#: src/takeoff/takeoff_widget/Launcher.cpp:129
+#: src/takeoff/takeoff_widget/Launcher.cpp:149
 #, fuzzy
 msgid "Add to favorites"
 msgstr "Избранное"

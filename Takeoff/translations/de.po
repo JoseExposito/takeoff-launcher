@@ -5,8 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: https://code.google.com/p/takeoff-launcher/issues/list\n"
-"POT-Creation-Date: 2011-08-27 04:11+0200\n"
+"Report-Msgid-Bugs-To: https://code.google.com/p/takeoff-launcher/issues/"
+"list\n"
+"POT-Creation-Date: 2011-09-01 11:10+0200\n"
 "PO-Revision-Date: 2011-08-27 04:17+0200\n"
 "Last-Translator: José Expósito\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -89,11 +90,11 @@ msgstr "Tabposition beibehalten"
 msgid "Show background image"
 msgstr "Zeige Hintergrundbild"
 
-#: src/takeoff/MainWindow.cpp:71
+#: src/takeoff/MainWindow.cpp:77
 msgid "Takeoff Launcher"
 msgstr "Takeoff-Anwendungsstarter"
 
-#: src/takeoff/MainWindow.cpp:72
+#: src/takeoff/MainWindow.cpp:78
 msgid "Launch your applications with elegance"
 msgstr "Die elegante Art Anwendungen zu starten"
 
@@ -109,15 +110,20 @@ msgstr "Anwendungen bearbeiten ..."
 msgid "Favorites"
 msgstr "Favoriten"
 
-#: src/takeoff/MainWindow.cpp:189
+#: src/takeoff/MainWindow.cpp:190
 msgid "All Applications"
 msgstr "Alle Anwendungen"
 
-#: src/takeoff/takeoff_widget/Launcher.cpp:126
+#: src/takeoff/model/menu/Menu.cpp:133
+#, fuzzy
+msgid "Other Applications"
+msgstr "Alle Anwendungen"
+
+#: src/takeoff/takeoff_widget/Launcher.cpp:146
 msgid "Remove from favorites"
 msgstr "Aus Favoriten entfernen"
 
-#: src/takeoff/takeoff_widget/Launcher.cpp:129
+#: src/takeoff/takeoff_widget/Launcher.cpp:149
 msgid "Add to favorites"
 msgstr "Zu Favoriten hinzufügen"
 
@@ -130,4 +136,3 @@ msgstr "Fabian B."
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "fabidesu@googlemail.com"
-

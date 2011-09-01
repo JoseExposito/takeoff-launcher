@@ -5,6 +5,7 @@ cmake_minimum_required(VERSION 2.6)
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 set(CMAKE_PREFIX_PATH /usr)
 set(CMAKE_INSTALL_PREFIX /usr)
+set(CMAKE_BUILD_TYPE RELEASE)
 
 find_package(KDE4 REQUIRED)
 find_package(MSGFMT REQUIRED)
