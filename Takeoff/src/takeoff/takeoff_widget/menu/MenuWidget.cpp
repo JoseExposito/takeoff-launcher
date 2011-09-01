@@ -51,12 +51,7 @@ MenuWidget::MenuWidget(QGraphicsWidget *parent)
 void MenuWidget::addMenuCategory(const QIcon &icon, const QString &title)
 {
     PanelArea *panelArea = new PanelArea(this);
-
     connect(panelArea, SIGNAL(clicked()), this, SIGNAL(clicked()));
-    connect(panelArea, SIGNAL(addedToFavorites()),
-            this, SIGNAL(addedToFavorites()));
-    connect(panelArea, SIGNAL(removedFromFavorites()),
-            this, SIGNAL(removedFromFavorites()));
 
     this->menuBar->addTab(icon, title, panelArea);
 
@@ -84,10 +79,10 @@ void MenuWidget::reloadFavorites()
         panelArea->removeAllLaunchers();
 
         Favorites *favorites = Favorites::getInstance();
-        QList<Takeoff::Launcher> *favoritesList = favorites->getFavorites();
+        const QList<Takeoff::Launcher> favList = favorites->getFavorites();
 
-        for (int n=0; n<favoritesList->length(); n++) {
-            Takeoff::Launcher launcher = favoritesList->at(n);
+        for (int n=0; n<favList.length(); n++) {
+            Takeoff::Launcher launcher = favList.at(n);
             this->addMenuLauncher(0, new Takeoff::Launcher(launcher));
         }
     }

@@ -108,12 +108,7 @@ signals:
      */
     void clicked() const;
 
-    /**
-     * Signal that is emitted when a launcher is added to favorites.
-     */
-    void addedToFavorites() const;
-
-private slots:
+public slots:
 
     /// Shows the menu area.
     void exitSearch();

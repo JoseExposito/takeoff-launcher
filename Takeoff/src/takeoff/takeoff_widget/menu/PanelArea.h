@@ -65,16 +65,6 @@ signals:
      */
     void clicked() const;
 
-    /**
-     * Signal that is emitted when a launcher is added to favorites.
-     */
-    void addedToFavorites() const;
-
-    /**
-     * Signal that is emitted when a launcher is removed from favorites.
-     */
-    void removedFromFavorites() const;
-
 private:
 
     /**

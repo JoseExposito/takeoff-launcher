@@ -100,10 +100,6 @@ void Panel::addLauncher(Takeoff::Launcher *launcher)
         return;
 
     connect(launcher, SIGNAL(clicked()), this, SIGNAL(clicked()));
-    connect(launcher, SIGNAL(addedToFavorites()),
-            this, SIGNAL(addedToFavorites()));
-    connect(launcher, SIGNAL(removedFromFavorites()),
-            this, SIGNAL(removedFromFavorites()));
 
     int row    = (this->launchers.length() / numColumns) + 1;
     int column = (this->launchers.length() % numColumns) + 1;

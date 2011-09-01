@@ -50,10 +50,6 @@ SearchWidget::SearchWidget(QGraphicsWidget *parent)
             this, SLOT(search(QString)));
 
     connect(this->resultsPanel, SIGNAL(clicked()), this, SIGNAL(clicked()));
-    connect(this->resultsPanel, SIGNAL(addedToFavorites()),
-            this, SIGNAL(addedToFavorites()));
-    connect(this->resultsPanel, SIGNAL(removedFromFavorites()),
-            this, SIGNAL(removedFromFavorites()));
 
     // Add the widgets
     QGraphicsGridLayout *l = new QGraphicsGridLayout(this);
@@ -78,15 +74,15 @@ void SearchWidget::search(const QString &text)
 
     // Get all the applications
     Menu *menu = Menu::getInstance();
-    QList<Takeoff::Launcher> *apps = menu->getAllApplications();
+    const QList<Takeoff::Launcher> apps = menu->getAllApplications();
 
     // Prepare the regular expression to find matches
     QRegExp reg("*" + text.toLower() + "*");
     reg.setPatternSyntax(QRegExp::Wildcard);
 
     int n = 0;
-    while (n<apps->length() && !this->resultsPanel->isFull()) {
-        Takeoff::Launcher launcher = apps->at(n);
+    while (n<apps.length() && !this->resultsPanel->isFull()) {
+        Takeoff::Launcher launcher = apps.at(n);
         QString name = launcher.getName().toLower();
 
         // If the application match with the search

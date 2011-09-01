@@ -123,14 +123,12 @@ void Launcher::addToFavorites() const
 {
     Favorites *favorites = Favorites::getInstance();
     favorites->addToFavorites(*this);
-    emit this->addedToFavorites();
 }
 
 void Launcher::removeFromFavorites() const
 {
     Favorites *favorites = Favorites::getInstance();
     favorites->removeFromFavorites(*this);
-    emit this->removedFromFavorites();
 }
 
 
@@ -144,7 +142,7 @@ void Launcher::mousePressEvent(QGraphicsSceneMouseEvent *event)
         QMenu menu;
 
         Favorites *favorites = Favorites::getInstance();
-        if (favorites->isfavorite(*this)) {
+        if (favorites->isFavorite(*this)) {
             menu.addAction(KIcon("list-remove"), i18n("Remove from favorites"),
                     this, SLOT(removeFromFavorites()));
         } else {

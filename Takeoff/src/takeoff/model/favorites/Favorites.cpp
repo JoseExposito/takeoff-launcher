@@ -19,11 +19,7 @@
  * @class  Favorites
  */
 #include "Favorites.h"
-#include <QtCore/QFile>
-#include <QtCore/QDir>
 #include <QtCore/QSettings>
-#include <QtCore/QLocale>
-#include <KDE/KIcon>
 #include <KDE/KStandardDirs>
 #include "../menu/Menu.h"
 
@@ -47,7 +43,6 @@ Favorites *Favorites::getInstance()
 // ************************************************************************** //
 
 Favorites::Favorites()
-        : favoritesList(new QList<Takeoff::Launcher>)
 {
     // Get the favorites URLs
     QString favoritesFile = KStandardDirs::locate("config", "takeoffrc");
@@ -58,13 +53,13 @@ Favorites::Favorites()
 
     // Get the list of all application
     Menu *menu = Menu::getInstance();
-    QList<Takeoff::Launcher> *allApps = menu->getAllApplications();
+    const QList<Takeoff::Launcher> allApps = menu->getAllApplications();
 
     // Search in the applications list the favorites
     foreach (const QString &desktopFile, desktopFiles) {
-        foreach (Takeoff::Launcher launcher, *allApps) {
+        foreach (Takeoff::Launcher launcher, allApps) {
             if (launcher.getDesktopFile() == desktopFile) {
-                this->favoritesList->append(launcher);
+                this->favoritesList.append(launcher);
                 break;
             }
         }
@@ -72,36 +67,33 @@ Favorites::Favorites()
 
 }
 
-Favorites::~Favorites()
-{
-    delete this->favoritesList;
-}
-
 
 // ************************************************************************** //
 // **********                    PUBLIC METHODS                    ********** //
 // ************************************************************************** //
 
-QList<Takeoff::Launcher> *Favorites::getFavorites()
+const QList<Takeoff::Launcher> &Favorites::getFavorites() const
 {
     return this->favoritesList;
 }
 
 void Favorites::addToFavorites(const Takeoff::Launcher launcher)
 {
-    this->favoritesList->append(launcher);
+    this->favoritesList.append(launcher);
     this->saveFavorites();
+    emit this->changed();
 }
 
 void Favorites::removeFromFavorites(const Takeoff::Launcher launcher)
 {
-    this->favoritesList->removeAll(launcher);
+    this->favoritesList.removeAll(launcher);
     this->saveFavorites();
+    emit this->changed();
 }
 
-bool Favorites::isfavorite(const Takeoff::Launcher launcher)
+bool Favorites::isFavorite(const Takeoff::Launcher launcher) const
 {
-    return this->favoritesList->contains(launcher);
+    return this->favoritesList.contains(launcher);
 }
 
 
@@ -115,8 +107,8 @@ void Favorites::saveFavorites() const
     QSettings settings(favoritesFile, QSettings::IniFormat);
 
     QStringList aux;
-    for (int n=0; n<this->favoritesList->length(); n++) {
-        Takeoff::Launcher l = this->favoritesList->at(n);
+    for (int n=0; n<this->favoritesList.length(); n++) {
+        Takeoff::Launcher l = this->favoritesList.at(n);
         aux.append(l.getDesktopFile());
     }
 

@@ -20,6 +20,7 @@
  */
 #include "Menu.h"
 #include <KDE/KServiceGroup>
+#include <KDE/KSycoca>
 #include <KDE/KIcon>
 
 // ************************************************************************** //
@@ -36,25 +37,48 @@ Menu* Menu::getInstance()
     return Menu::instance;
 }
 
-void Menu::loadMenu()
-{
-    if (instance != NULL) {
-        delete instance;
-        instance = NULL;
-    }
-    Menu::getInstance();
-}
-
-
 
 // ************************************************************************** //
 // **********              CONSTRUCTORS AND DESTRUCTOR             ********** //
 // ************************************************************************** //
 
 Menu::Menu()
-        : allApplications(new QList<Takeoff::Launcher>),
-          categories(new QList< QPair<QString, KIcon>* >),
-          categoriesApplications(new QList< QList<Takeoff::Launcher>* >)
+{
+    // Subscribe to the changes in the menu (new application instaled, etc)
+    connect(KSycoca::self(), SIGNAL(databaseChanged(QStringList)),
+            this, SLOT(checkReloadMenu(QStringList)));
+
+    // Load the menu
+    this->loadMenu();
+}
+
+
+// ************************************************************************** //
+// **********                    PRIVATE SLOTS                     ********** //
+// ************************************************************************** //
+
+void Menu::checkReloadMenu(const QStringList &changes)
+{
+    // Check http://api.kde.org/4.7-api/kdelibs-apidocs/kdecore/html/
+    //       classKStandardDirs.html#_details
+    if (changes.contains("services") || changes.contains("apps")) {
+        // Reset the model
+        this->categoriesApplications.clear();
+        this->allApplications.clear();
+        this->categories.clear();
+
+        // Reload the model and send the corresponding signal
+        this->loadMenu();
+        emit this->changed();
+    }
+}
+
+
+// ************************************************************************** //
+// **********                   PRIVATE METHODS                    ********** //
+// ************************************************************************** //
+
+void Menu::loadMenu()
 {
     KServiceGroup::Ptr root = KServiceGroup::group(QString());
 
@@ -67,6 +91,9 @@ Menu::Menu()
             false,  // Don't allow separators
             true ); // Sort by generic name
 
+    // List with the launcher to add to the "Other Applications" category
+    QList<Takeoff::Launcher> otherApplications;
+
     for (KServiceGroup::List::ConstIterator it=list.constBegin();
             it != list.constEnd(); it++) {
         const KSycocaEntry::Ptr p = (*it);
@@ -78,49 +105,44 @@ Menu::Menu()
             if (group->noDisplay() || group->childCount() == 0)
                 continue;
 
-            // Save the category
-            QPair<QString, KIcon> *category = new QPair<QString, KIcon>;
-            category->first  = group->caption();
-            category->second = KIcon(group->icon());
-            this->categories->append(category);
-
-            // Add the category to the categoriesApplications list
-            QList<Takeoff::Launcher>* l = new QList<Takeoff::Launcher>;
-            this->categoriesApplications->append(l);
-
-            // Save the category applications
+            // Create the category and save  the applications
+            this->createCategory(group->caption(), group->icon());
             this->saveApplications(group->relPath(),
-                    this->categories->length()-1);
+                    this->categories.length()-1);
 
-        // Launcher
+        // If a launcher is detected here is because is a launcher without
+        // category. Is necesary add it to the "Other Aplications" category
         } else if (p->isType(KST_KService)) {
-
-            // TODO Aquí hay que ver si hay aplicaciones sueltas y añadirlas a
-            //      una categoría "Otras aplicaciones"
-// TODO Hacer que cuando se instalen aplicaciones se actualice el menú ya de paso
-            /*
             const KService::Ptr service = KService::Ptr::staticCast(p);
+
             if (service->noDisplay())
                 continue;
-            qDebug() << service->name() << service->genericName()
-                    << service->entryPath() << service->icon();
-            */
+
+            Takeoff::Launcher launcher(
+                    KIcon(service->icon()),
+                    service->name(),
+                    service->genericName(),
+                    service->entryPath());
+            otherApplications.append(launcher);
+        }
+    }
+
+    // If is necesary add the "Other Applications" category
+    if (!otherApplications.isEmpty()) {
+        // Create the Other Applications category
+        this->createCategory(i18n("Other Applications"), "applications-other");
+
+        // Add the launchers
+        foreach (Takeoff::Launcher launcher, otherApplications) {
+            this->allApplications.append(launcher);
+            int categoryIndex = this->categories.length()-1;
+            QList<Takeoff::Launcher> aux =
+                    this->categoriesApplications.at(categoryIndex);
+            aux.append(launcher);
+            this->categoriesApplications.replace(categoryIndex, aux);
         }
     }
 }
-
-Menu::~Menu()
-{
-    qDeleteAll(this->categories->begin(), this->categories->end());
-    delete this->allApplications;
-    delete this->categories;
-    delete this->categoriesApplications;
-}
-
-
-// ************************************************************************** //
-// **********                   PRIVATE METHODS                    ********** //
-// ************************************************************************** //
 
 void Menu::saveApplications(const QString &path, int categoryIndex)
 {
@@ -161,10 +183,26 @@ void Menu::saveApplications(const QString &path, int categoryIndex)
                     service->genericName(),
                     service->entryPath());
 
-            this->allApplications->append(launcher);
-            this->categoriesApplications->at(categoryIndex)->append(launcher);
+            this->allApplications.append(launcher);
+            QList<Takeoff::Launcher> aux =
+                    this->categoriesApplications.at(categoryIndex);
+            aux.append(launcher);
+            this->categoriesApplications.replace(categoryIndex, aux);
         }
     }
+}
+
+void Menu::createCategory(const QString &name, const QString &icon)
+{
+    // Save the category
+    QPair<QString, KIcon> category;
+    category.first  = name;
+    category.second = KIcon(icon);
+    this->categories.append(category);
+
+    // Add the category to the categoriesApplications list
+    QList<Takeoff::Launcher> l;
+    this->categoriesApplications.append(l);
 }
 
 
@@ -172,18 +210,18 @@ void Menu::saveApplications(const QString &path, int categoryIndex)
 // **********                      GET/SET/IS                      ********** //
 // ************************************************************************** //
 
-QList<Takeoff::Launcher> *Menu::getAllApplications() const
+const QList<Takeoff::Launcher> &Menu::getAllApplications() const
 {
     return this->allApplications;
 }
 
-QList< QPair<QString, KIcon>* > *Menu::getCategories() const
+const QList< QPair<QString, KIcon> > &Menu::getCategories() const
 {
     return this->categories;
 }
 
-QList<Takeoff::Launcher> *Menu::getCategoriesApplications(int categoryIndex)
-        const
+const QList<Takeoff::Launcher> &Menu::getCategoriesApplications(
+        int categoryIndex) const
 {
-    return this->categoriesApplications->at(categoryIndex);
+    return this->categoriesApplications.at(categoryIndex);
 }

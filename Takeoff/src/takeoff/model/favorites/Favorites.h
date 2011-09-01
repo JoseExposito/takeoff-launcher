@@ -21,14 +21,24 @@
 #ifndef MODEL_FAVORITES_H
 #define MODEL_FAVORITES_H
 
+#include <QtCore/QObject>
 #include <QtCore/QList>
 #include "../../takeoff_widget/Launcher.h"
 
 /**
- * Class to access to the Kickoff favorites.
+ * Class to access to the favorites. Is a singleton, the only way to get an
+ * a instance of the class is call to the getInstance() method:
+ *
+ * Favorites *favorites = Favorites::getInstance();
+ *
+ * Provides access to the favorites with getFavorites(), methods to add and
+ * remove favorites with addToFavorites() and removeFromFavorites() and a method
+ * isfavorite() to check if a launcher is a favorite.
+ * Finally, this model emits the changed() signal when the favorites change.
  */
-class Favorites
+class Favorites : public QObject
 {
+    Q_OBJECT
 
 public:
 
@@ -38,18 +48,13 @@ public:
      */
     static Favorites *getInstance();
 
-    /**
-     * Destructor.
-     */
-    virtual ~Favorites();
-
     //--------------------------------------------------------------------------
 
     /**
      * Returns the list of the favorite applications
      * @return The list.
      */
-    QList<Takeoff::Launcher> *getFavorites();
+    const QList<Takeoff::Launcher> &getFavorites() const;
 
     /**
      * Adds the specified launcher to favorites.
@@ -68,7 +73,14 @@ public:
      * @param  launcher The launcher to check.
      * @return True if is a favorite, false if not.
      */
-    bool isfavorite(const Takeoff::Launcher launcher);
+    bool isFavorite(const Takeoff::Launcher launcher) const;
+
+signals:
+
+    /**
+     * Emitted whenever the model changes.
+     */
+    void changed();
 
 private:
 
@@ -78,7 +90,7 @@ private:
     void saveFavorites() const;
 
     /// List with the favorites
-    QList<Takeoff::Launcher> *favoritesList;
+    QList<Takeoff::Launcher> favoritesList;
 
     //--------------------------------------------------------------------------
 

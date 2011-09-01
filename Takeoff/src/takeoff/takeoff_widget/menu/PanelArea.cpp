@@ -84,10 +84,6 @@ void PanelArea::addPanel()
 {
     Panel *newPanel = new Panel(this);
     connect(newPanel, SIGNAL(clicked()), this, SIGNAL(clicked()));
-    connect(newPanel, SIGNAL(addedToFavorites()),
-            this, SIGNAL(addedToFavorites()));
-    connect(newPanel, SIGNAL(removedFromFavorites()),
-            this, SIGNAL(removedFromFavorites()));
 
     this->panelTabBar->addTab("", newPanel);
     this->panelSelector->addTab(

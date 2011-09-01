@@ -21,12 +21,12 @@
 #include "MainWindow.h"
 #include <QtCore/QList>
 #include <QtCore/QTranslator>
-#include <QtCore/QProcess>
 #include <QtGui/QApplication>
 #include <QtGui/QDesktopWidget>
 #include <QtGui/QAction>
 #include <KDE/KIcon>
 #include <KDE/KConfigDialog>
+#include <KDE/KProcess>
 #include <KDE/Plasma/ToolTipContent>
 #include <KDE/Plasma/ToolTipManager>
 #include "takeoff_widget/TakeoffWidget.h"
@@ -63,6 +63,12 @@ MainWindow::MainWindow(QObject *parent, const QVariantList &args)
     // Hide the popup when an application is launched
     connect(this->takeoff, SIGNAL(clicked()), this, SLOT(hidePopup()));
 
+    // Load the model when is necessary
+    Menu *menu = Menu::getInstance();
+    Favorites *fav = Favorites::getInstance();
+    connect(menu, SIGNAL(changed()), this, SLOT(loadConfig()));
+    connect(fav, SIGNAL(changed()), this->takeoff, SLOT(reloadFavorites()));
+
     // Load the configuration
     this->loadConfig();
 
@@ -82,7 +88,6 @@ MainWindow::MainWindow(QObject *parent, const QVariantList &args)
 void MainWindow::loadConfig()
 {
     Config::loadConfig();
-    Menu::loadMenu();
 
     this->takeoff->reset();
 
@@ -121,9 +126,7 @@ void MainWindow::loadConfig()
 
 void MainWindow::launchMenuEditor() const
 {
-    QProcess* myProcess = new QProcess();
-    connect(myProcess, SIGNAL(finished(int)), this, SLOT(loadConfig()));
-    myProcess->start("kmenuedit --nofork");
+    KProcess::execute("kmenuedit");
 }
 
 
@@ -171,10 +174,10 @@ void MainWindow::loadFavorites()
     this->takeoff->addMenuCategory(KIcon("favorites"), i18n("Favorites"));
 
     Favorites *favorites = Favorites::getInstance();
-    QList<Launcher> *favoritesList = favorites->getFavorites();
+    QList<Launcher> favoritesList = favorites->getFavorites();
 
-    for (int n=0; n<favoritesList->length(); n++) {
-        Launcher launcher = favoritesList->at(n);
+    for (int n=0; n<favoritesList.length(); n++) {
+        Launcher launcher = favoritesList.at(n);
         this->takeoff->addMenuLauncher(this->takeoff->getNumMenuCategories()-1,
                 new Launcher(launcher));
     }
@@ -188,10 +191,10 @@ void MainWindow::loadAllApplications()
 
     // Load the launchers
     Menu* menu = Menu::getInstance();
-    QList<Launcher> *allApplications = menu->getAllApplications();
+    const QList<Launcher> allApplications = menu->getAllApplications();
 
-    for (int n=0; n<allApplications->length(); n++) {
-        Launcher *launcher = new Launcher(allApplications->at(n));
+    for (int n=0; n<allApplications.length(); n++) {
+        Launcher *launcher = new Launcher(allApplications.at(n));
         this->takeoff->addMenuLauncher(this->takeoff->getNumMenuCategories()-1,
                 launcher);
     }
@@ -200,17 +203,17 @@ void MainWindow::loadAllApplications()
 void MainWindow::loadXdgMenu()
 {
     Menu* menu = Menu::getInstance();
-    QList< QPair<QString, KIcon>* > *categories = menu->getCategories();
+    const QList< QPair<QString, KIcon> > categories = menu->getCategories();
 
-    for (int n=0; n<categories->length(); n++) {
+    for (int n=0; n<categories.length(); n++) {
         // Load the categories tabs
-        QPair<QString, KIcon> *pair = categories->at(n);
-        this->takeoff->addMenuCategory(pair->second, pair->first);
+        QPair<QString, KIcon> pair = categories.at(n);
+        this->takeoff->addMenuCategory(pair.second, pair.first);
 
         // Load the launchers
-        QList<Launcher> *launchers = menu->getCategoriesApplications(n);
-        for (int l=0; l<launchers->length(); l++) {
-            Launcher *launcher = new Launcher(launchers->at(l));
+        const QList<Launcher> launchers = menu->getCategoriesApplications(n);
+        for (int l=0; l<launchers.length(); l++) {
+            Launcher *launcher = new Launcher(launchers.at(l));
             this->takeoff->addMenuLauncher(
                     this->takeoff->getNumMenuCategories()-1, launcher);
         }

@@ -70,17 +70,8 @@ void TakeoffWidget::reset()
 
     // Signals and slots
     connect(this->menuWidget, SIGNAL(clicked()), this, SIGNAL(clicked()));
-    connect(this->menuWidget, SIGNAL(addedToFavorites()),
-            this, SLOT(reloadFavorites()));
-    connect(this->menuWidget, SIGNAL(removedFromFavorites()),
-            this, SLOT(reloadFavorites()));
-
     connect(this->searchWidget, SIGNAL(clicked()), this, SIGNAL(clicked()));
     connect(this->searchWidget, SIGNAL(exitSearch()), this, SLOT(exitSearch()));
-    connect(this->searchWidget, SIGNAL(addedToFavorites()),
-            this, SLOT(reloadFavorites()));
-    connect(this->searchWidget, SIGNAL(removedFromFavorites()),
-            this, SLOT(reloadFavorites()));
 
     // Never show the tabBar bar
     this->tabBar->setTabBarShown(false);
@@ -158,7 +149,7 @@ void TakeoffWidget::setFirstTab(bool changeMenuTab)
 
 
 // ************************************************************************** //
-// **********                    PRIVATE SLOTS                     ********** //
+// **********                     PUBLIC SLOTS                     ********** //
 // ************************************************************************** //
 
 void TakeoffWidget::exitSearch()
@@ -166,9 +157,7 @@ void TakeoffWidget::exitSearch()
     this->tabBar->setCurrentIndex(0);
 }
 
-#include <QDebug>
 void TakeoffWidget::reloadFavorites()
 {
-    qDebug() << "OK";
     this->menuWidget->reloadFavorites();
 }
