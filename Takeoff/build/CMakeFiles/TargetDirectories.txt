@@ -1,4 +1,0 @@
-/home/jose/Programación/C++/Proyectos/Takeoff/Takeoff/build/CMakeFiles/plasma_applet_takeoff.dir
-/home/jose/Programación/C++/Proyectos/Takeoff/Takeoff/build/CMakeFiles/plasma_applet_takeoff_automoc.dir
-/home/jose/Programación/C++/Proyectos/Takeoff/Takeoff/build/translations/CMakeFiles/translations.dir
-/home/jose/Programación/C++/Proyectos/Takeoff/Takeoff/build/CMakeFiles/uninstall.dir
