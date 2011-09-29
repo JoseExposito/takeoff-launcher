@@ -1,0 +1,14 @@
+# Hashes of file build rules.
+7b1f3dd5a0f68104973fbfb395457911 CMakeFiles/plasma_applet_takeoff_automoc
+893f8393aa526aa895cbba08163acda5 CMakeFiles/uninstall
+c5632401d9f11117fe13dc381606bebe translations/CMakeFiles/translations
+99aa5ef79f673495405c16332cff9bfa translations/ca.gmo
+c80f4e2093da4bb9add977951c47bec5 translations/de.gmo
+193a649b3138c047e4ca945183202348 translations/el.gmo
+e52ec05395aebbde4a5906687c0738c6 translations/es.gmo
+54cbeff8f6e0cfb0e958640198b01ac7 translations/gl.gmo
+4270db705eed60d5a8da8b0b040a6097 translations/it.gmo
+a165b53b2659fda27001f4b541a3ff87 translations/pl.gmo
+d75a1bc6f9fd6bb7187d109c40bee5d1 translations/ru.gmo
+e20f378589ee285a4a6cd7e6e764bc88 translations/tr.gmo
+afbf7fcb0efc804bf8c5896670b2b321 ui_GeneralSettingsForm.h
