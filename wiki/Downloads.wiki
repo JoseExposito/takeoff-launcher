@@ -18,7 +18,7 @@ Bellow you can download packages for your favorite distro or download the source
   - https://build.opensuse.org/package/show?package=takeoff&project=home%3AFaster3ck%3Afasterindesign
 
  * *!OpenSuse:* Install Takeoff from the official repository
-  $ sudo zypper addrepo http://download.opensuse.org/repositories/KDE:Extra/openSUSE_11.4/KDE:Extra.repo <br/>
+  $ sudo zypper addrepo !http://download.opensuse.org/repositories/KDE:Extra/openSUSE_11.4/KDE:Extra.repo <br/>
   $ sudo zypper refresh <br/>
   $ sudo zypper install plasmoid-takeoff
 
