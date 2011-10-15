@@ -23,7 +23,7 @@ Bellow you can download packages for your favorite distro or download the source
   {{{$ sudo zypper install plasmoid-takeoff}}}
 
  * *Ubuntu:* Add this PPA (thanks to Ferramosca Roberto)
-  {{{$ sudo apt-add-repository ppa:ferramroberto/nattyextra}}} <br/>
+  {{{$ sudo apt-add-repository ppa:ferramroberto/oneiricextra}}} <br/>
   {{{$ sudo apt-get update}}} <br/>
   {{{$ sudo apt-get install takeoff}}}
 
