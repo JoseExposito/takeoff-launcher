@@ -17,6 +17,9 @@ Bellow you can download packages for your favorite distro or download the source
  * *Fedora 15:* Download and install this packages (thanks to Faster)
   - https://build.opensuse.org/package/show?package=takeoff&project=home%3AFaster3ck%3Afasterindesign
 
+ * *Gentoo 15:* (thanks to [https://twitter.com/#!/asux @asux])
+  - https://github.com/asux/asux-overlay
+
  * *!OpenSuse:* Install Takeoff from the official repository
   {{{$ sudo zypper addrepo http://download.opensuse.org/repositories/KDE:Extra/openSUSE_11.4/KDE:Extra.repo}}} <br/>
   {{{$ sudo zypper refresh}}} <br/>
