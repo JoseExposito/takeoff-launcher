@@ -8,7 +8,7 @@ Bellow you can download packages for your favorite distro or download the source
 <hr>
 <br/>
 
- * *Arch Linux:* Available in [https://aur.archlinux.org/packages.php?ID=51137 AUR] (thanks to Unikum)
+ * *Arch Linux:* Available in [https://aur.archlinux.org/packages.php?ID=60955 AUR] (thanks to Unikum)
   {{{$ yaourt -S kdeplasma-addons-applets-takeoff}}}
 
  * *Chakra:* Install Takeoff from the official repository
