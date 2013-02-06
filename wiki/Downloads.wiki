@@ -14,6 +14,9 @@ Bellow you can download packages for your favorite distro or download the source
  * *Chakra:* Install Takeoff from the official repository
   {{{$ sudo pacman -S kdeplasma-addons-applets-takeoff}}}
 
+ * *Debian:* A DEB package is available (thanks to jeffbaichina)
+  - http://code.google.com/p/takeoff-launcher/issues/detail?id=40
+
  * *Fedora 15:* Download and install this packages (thanks to Faster)
   - https://build.opensuse.org/package/show?package=takeoff&project=home%3AFaster3ck%3Afasterindesign
 
