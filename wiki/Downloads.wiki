@@ -23,6 +23,9 @@ Bellow you can download packages for your favorite distro or download the source
  * *Gentoo:* (thanks to [https://twitter.com/#!/asux @asux])
   - https://github.com/asux/asux-overlay
 
+ * * Mageia:* Install Takeoff from the official repository
+  {{{$ sudo urpmi plasma-applet-takeoff}}}
+
  * *!OpenSuse:* Install Takeoff from the official repository
   {{{$ sudo zypper addrepo http://download.opensuse.org/repositories/KDE:Extra/openSUSE_11.4/KDE:Extra.repo}}} <br/>
   {{{$ sudo zypper refresh}}} <br/>
